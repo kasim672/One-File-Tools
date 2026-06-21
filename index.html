@@ -3,77 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>One File Tools - Developer Tools, One File Each</title>
+    <title>One File Tools - Developer tools, one file each.</title>
     <meta name="description" content="A collection of useful developer tools, each built as a single, self-contained HTML file. No build step. No dependencies. No frameworks." />
     <meta property="og:title" content="One File Tools" />
-    <meta property="og:description" content="Developer tools, one file each. No build step. No dependencies. No frameworks." />
+    <meta property="og:description" content="A collection of useful developer tools, each built as a single, self-contained HTML file. No build step. No dependencies. No frameworks." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://one-file-tools.pages.dev" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="One File Tools" />
+    <meta name="twitter:description" content="A collection of useful developer tools, each built as a single, self-contained HTML file. No build step. No dependencies. No frameworks." />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>" />
     <style>
       /* ========================================
-         CSS Custom Properties
+         Custom Properties
          ======================================== */
       :root {
         --bg: #fafafa;
-        --bg-card: #ffffff;
-        --bg-card-hover: #f5f5f5;
+        --bg-elevated: #ffffff;
+        --bg-hover: #f5f5f5;
         --bg-hero: #0a0a0a;
-        --text: #1a1a1a;
-        --text-muted: #6b7280;
+        --bg-overlay: rgba(0, 0, 0, 0.6);
+        --text: #18181b;
+        --text-muted: #71717a;
         --text-hero: #ffffff;
         --text-hero-muted: #a1a1aa;
         --accent: #3b82f6;
         --accent-hover: #2563eb;
-        --border: #e5e7eb;
-        --border-light: #f0f0f0;
-        --tag-bg: #e0e7ff;
-        --tag-text: #3730a3;
-        --tag-easy-bg: #d1fae5;
-        --tag-easy-text: #065f46;
-        --tag-medium-bg: #fef3c7;
-        --tag-medium-text: #92400e;
+        --border: #e4e4e7;
+        --tag-bg: #eff6ff;
+        --tag-text: #1d4ed8;
+        --easy-bg: #dcfce7;
+        --easy-text: #166534;
+        --medium-bg: #fef9c3;
+        --medium-text: #854d0e;
+        --live-bg: #dcfce7;
+        --live-text: #166534;
+        --idea-bg: #f3f4f6;
+        --idea-text: #6b7280;
         --radius: 12px;
         --radius-sm: 8px;
-        --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.08);
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+        --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+        --shadow-lg: 0 10px 40px rgba(0,0,0,0.1);
+        --shadow-xl: 0 20px 60px rgba(0,0,0,0.15);
         --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         --font-mono: "SF Mono", SFMono-Regular, ui-monospace, Menlo, Consolas, monospace;
-        --terminal-green: #4ade80;
-        --terminal-dim: #6b7280;
+        --transition: 0.2s ease;
       }
 
       [data-theme="dark"] {
-        --bg: #0a0a0a;
-        --bg-card: #18181b;
-        --bg-card-hover: #27272a;
+        --bg: #09090b;
+        --bg-elevated: #18181b;
+        --bg-hover: #27272a;
+        --bg-overlay: rgba(0, 0, 0, 0.75);
         --text: #fafafa;
         --text-muted: #a1a1aa;
         --border: #27272a;
-        --border-light: #1e1e1e;
         --tag-bg: #1e1b4b;
         --tag-text: #a5b4fc;
-        --tag-easy-bg: #064e3b;
-        --tag-easy-text: #6ee7b7;
-        --tag-medium-bg: #78350f;
-        --tag-medium-text: #fde68a;
-        --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);
+        --easy-bg: #052e16;
+        --easy-text: #86efac;
+        --medium-bg: #422006;
+        --medium-text: #fde047;
+        --live-bg: #052e16;
+        --live-text: #86efac;
+        --idea-bg: #27272a;
+        --idea-text: #a1a1aa;
+        --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+        --shadow: 0 1px 3px rgba(0,0,0,0.3);
+        --shadow-lg: 0 10px 40px rgba(0,0,0,0.4);
+        --shadow-xl: 0 20px 60px rgba(0,0,0,0.5);
       }
 
       /* ========================================
          Reset & Base
          ======================================== */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
 
       body {
         font-family: var(--font);
@@ -81,1491 +87,1190 @@
         color: var(--text);
         background: var(--bg);
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
       /* ========================================
-         Design Switcher (top bar)
+         Nav
          ======================================== */
-      .design-switcher {
-        position: fixed;
+      .nav {
+        position: sticky;
         top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: #18181b;
-        border-bottom: 1px solid #27272a;
+        z-index: 100;
+        background: var(--bg-elevated);
+        border-bottom: 1px solid var(--border);
         padding: 0.75rem 1.5rem;
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 1rem;
-        flex-wrap: wrap;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
       }
 
-      .design-switcher label {
-        color: #a1a1aa;
-        font-size: 0.8rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
-      }
-
-      .design-switcher .buttons {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-
-      .design-switcher button {
-        font-family: var(--font);
-        font-size: 0.8rem;
-        padding: 0.4rem 0.85rem;
-        border: 1px solid #3f3f46;
-        border-radius: 6px;
-        background: transparent;
-        color: #d4d4d8;
-        cursor: pointer;
-        transition: all 0.2s;
-        white-space: nowrap;
-      }
-
-      .design-switcher button:hover {
-        background: #27272a;
-        border-color: #52525b;
-      }
-
-      .design-switcher button.active {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: white;
-      }
-
-      .design-switcher .theme-toggle {
-        margin-left: auto;
-        background: none;
-        border: 1px solid #3f3f46;
-        font-size: 1.1rem;
-        padding: 0.35rem 0.6rem;
-        cursor: pointer;
-        border-radius: 6px;
-        color: #d4d4d8;
-      }
-
-      body {
-        padding-top: 60px;
-      }
-
-      /* ========================================
-         Design sections (only active one shows)
-         ======================================== */
-      .design-section {
-        display: none;
-      }
-
-      .design-section.active {
-        display: block;
-      }
-
-      /* ========================================
-         Shared Components
-         ======================================== */
-      .tag {
-        display: inline-block;
-        font-size: 0.7rem;
-        font-weight: 600;
-        padding: 0.2rem 0.55rem;
-        border-radius: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-      }
-
-      .tag-category {
-        background: var(--tag-bg);
-        color: var(--tag-text);
-      }
-
-      .tag-easy {
-        background: var(--tag-easy-bg);
-        color: var(--tag-easy-text);
-      }
-
-      .tag-medium {
-        background: var(--tag-medium-bg);
-        color: var(--tag-medium-text);
-      }
-
-      /* ========================================
-         DESIGN 1: Tool Directory
-         Clean grid with category filters
-         ======================================== */
-      .d1-header {
-        text-align: center;
-        padding: 3rem 1.5rem 1.5rem;
-      }
-
-      .d1-header h1 {
-        font-size: 2rem;
+      .nav-brand {
         font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .d1-header p {
-        color: var(--text-muted);
         font-size: 1.05rem;
-        max-width: 500px;
-        margin: 0 auto 1.5rem;
-      }
-
-      .d1-search {
-        max-width: 480px;
-        margin: 0 auto 1rem;
-        position: relative;
-      }
-
-      .d1-search input {
-        width: 100%;
-        padding: 0.75rem 1rem 0.75rem 2.75rem;
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        background: var(--bg-card);
         color: var(--text);
-        font-size: 0.95rem;
-        font-family: var(--font);
-        outline: none;
-        transition: border-color 0.2s;
-      }
-
-      .d1-search input:focus {
-        border-color: var(--accent);
-      }
-
-      .d1-search svg {
-        position: absolute;
-        left: 0.9rem;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 18px;
-        height: 18px;
-        color: var(--text-muted);
-      }
-
-      .d1-filters {
+        text-decoration: none;
         display: flex;
-        justify-content: center;
+        align-items: center;
         gap: 0.5rem;
-        flex-wrap: wrap;
-        padding: 0 1.5rem 2rem;
       }
 
-      .d1-filters button {
-        font-family: var(--font);
-        font-size: 0.85rem;
-        padding: 0.4rem 0.9rem;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        background: var(--bg-card);
-        color: var(--text-muted);
-        cursor: pointer;
-        transition: all 0.2s;
-      }
+      .nav-brand:hover { text-decoration: none; }
 
-      .d1-filters button:hover,
-      .d1-filters button.active {
-        background: var(--accent);
-        color: white;
-        border-color: var(--accent);
-      }
-
-      .d1-grid {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 1.5rem 3rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      .nav-links {
+        display: flex;
+        align-items: center;
         gap: 1rem;
       }
 
-      .d1-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.25rem;
-        transition: all 0.2s;
-        cursor: pointer;
-      }
-
-      .d1-card:hover {
-        background: var(--bg-card-hover);
-        box-shadow: var(--shadow);
-        transform: translateY(-2px);
-      }
-
-      .d1-card h3 {
-        font-size: 1rem;
-        font-weight: 600;
-        margin-bottom: 0.35rem;
-      }
-
-      .d1-card p {
+      .nav-links a {
         font-size: 0.85rem;
         color: var(--text-muted);
-        margin-bottom: 0.75rem;
+        transition: color var(--transition);
       }
 
-      .d1-card .tags {
-        display: flex;
-        gap: 0.4rem;
+      .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 0.35rem 0.55rem;
+        cursor: pointer;
+        font-size: 1rem;
+        color: var(--text);
+        transition: all var(--transition);
+        line-height: 1;
       }
+
+      .theme-toggle:hover { background: var(--bg-hover); }
 
       /* ========================================
-         DESIGN 2: Hero + Scroll
-         Bold hero, stats, then categorized grid
+         Hero
          ======================================== */
-      .d2-hero {
+      .hero {
         background: var(--bg-hero);
-        padding: 6rem 1.5rem;
+        padding: 5rem 1.5rem 4rem;
         text-align: center;
         position: relative;
         overflow: hidden;
       }
 
-      .d2-hero::before {
+      .hero::before {
         content: "";
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.08) 0%, transparent 50%), radial-gradient(circle at 70% 50%, rgba(168, 85, 247, 0.06) 0%, transparent 50%);
-        animation: d2-glow 15s ease-in-out infinite alternate;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background:
+          radial-gradient(circle at 30% 40%, rgba(59,130,246,0.07) 0%, transparent 50%),
+          radial-gradient(circle at 70% 60%, rgba(168,85,247,0.05) 0%, transparent 50%);
+        pointer-events: none;
       }
 
-      @keyframes d2-glow {
-        0% {
-          transform: translate(0, 0);
-        }
-        100% {
-          transform: translate(2%, -2%);
-        }
-      }
+      .hero-content { position: relative; z-index: 1; }
 
-      .d2-hero-content {
-        position: relative;
-        z-index: 1;
-      }
-
-      .d2-hero h1 {
-        font-size: clamp(2.5rem, 6vw, 4rem);
+      .hero h1 {
+        font-size: clamp(2.2rem, 5.5vw, 3.5rem);
         font-weight: 800;
         color: var(--text-hero);
-        margin-bottom: 1rem;
         letter-spacing: -0.03em;
-        line-height: 1.1;
+        line-height: 1.15;
+        margin-bottom: 0.75rem;
       }
 
-      .d2-hero h1 span {
-        background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      .hero h1 .gradient {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
       }
 
-      .d2-hero p {
+      .hero p {
         color: var(--text-hero-muted);
-        font-size: 1.15rem;
-        max-width: 550px;
+        font-size: 1.1rem;
+        max-width: 540px;
         margin: 0 auto 2rem;
       }
 
-      .d2-hero-buttons {
+      .hero-buttons {
         display: flex;
         gap: 0.75rem;
         justify-content: center;
         flex-wrap: wrap;
       }
 
-      .d2-hero-buttons a {
-        padding: 0.75rem 1.5rem;
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.7rem 1.4rem;
         border-radius: var(--radius-sm);
         font-weight: 600;
-        font-size: 0.95rem;
-        transition: all 0.2s;
+        font-size: 0.9rem;
+        font-family: var(--font);
+        transition: all var(--transition);
         text-decoration: none;
-      }
-
-      .d2-btn-primary {
-        background: var(--accent);
-        color: white;
-      }
-
-      .d2-btn-primary:hover {
-        background: var(--accent-hover);
-        text-decoration: none;
-      }
-
-      .d2-btn-secondary {
-        background: rgba(255, 255, 255, 0.08);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-      }
-
-      .d2-btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.12);
-        text-decoration: none;
-      }
-
-      .d2-stats {
-        display: flex;
-        justify-content: center;
-        gap: 3rem;
-        padding: 3rem 1.5rem;
-        max-width: 700px;
-        margin: 0 auto;
-        flex-wrap: wrap;
-      }
-
-      .d2-stat {
-        text-align: center;
-      }
-
-      .d2-stat .num {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: var(--accent);
-        line-height: 1;
-      }
-
-      .d2-stat .label {
-        font-size: 0.85rem;
-        color: var(--text-muted);
-        margin-top: 0.3rem;
-      }
-
-      .d2-categories {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 0 1.5rem 4rem;
-      }
-
-      .d2-category {
-        margin-bottom: 3rem;
-      }
-
-      .d2-category h2 {
-        font-size: 1.3rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border);
-      }
-
-      .d2-category-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 0.75rem;
-      }
-
-      .d2-tool {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        padding: 0.85rem 1rem;
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        transition: all 0.2s;
+        border: none;
         cursor: pointer;
       }
 
-      .d2-tool:hover {
-        background: var(--bg-card-hover);
-        transform: translateX(4px);
-      }
+      .btn:hover { text-decoration: none; }
+      .btn-primary { background: var(--accent); color: #fff; }
+      .btn-primary:hover { background: var(--accent-hover); }
+      .btn-ghost { background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+      .btn-ghost:hover { background: rgba(255,255,255,0.14); }
 
-      .d2-tool-icon {
-        width: 36px;
-        height: 36px;
-        border-radius: 8px;
-        background: var(--tag-bg);
+      /* ========================================
+         Stats
+         ======================================== */
+      .stats {
         display: flex;
-        align-items: center;
         justify-content: center;
-        font-size: 1.1rem;
-        flex-shrink: 0;
+        gap: 2.5rem;
+        padding: 2.5rem 1.5rem;
+        flex-wrap: wrap;
+        max-width: 750px;
+        margin: 0 auto;
       }
 
-      .d2-tool-info h4 {
+      .stat { text-align: center; }
+      .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+      .stat-label { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.2rem; }
+
+      /* ========================================
+         Search & Filters
+         ======================================== */
+      .controls {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1.5rem 1.5rem;
+      }
+
+      .search-bar {
+        position: relative;
+        max-width: 480px;
+        margin: 0 auto 1.25rem;
+      }
+
+      .search-bar input {
+        width: 100%;
+        padding: 0.7rem 1rem 0.7rem 2.6rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        background: var(--bg-elevated);
+        color: var(--text);
         font-size: 0.9rem;
-        font-weight: 600;
+        font-family: var(--font);
+        outline: none;
+        transition: border-color var(--transition), box-shadow var(--transition);
       }
 
-      .d2-tool-info p {
-        font-size: 0.78rem;
+      .search-bar input:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(59,130,246,0.1);
+      }
+
+      .search-bar svg {
+        position: absolute;
+        left: 0.85rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px; height: 16px;
         color: var(--text-muted);
+        pointer-events: none;
+      }
+
+      .filters {
+        display: flex;
+        justify-content: center;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        font-family: var(--font);
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--bg-elevated);
+        color: var(--text-muted);
+        cursor: pointer;
+        transition: all var(--transition);
+        white-space: nowrap;
+      }
+
+      .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .filter-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+      .results-count {
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 0.75rem;
       }
 
       /* ========================================
-         DESIGN 3: Interactive Showcase
-         Featured tool preview + category cards
+         Tool Grid
          ======================================== */
-      .d3-hero {
-        padding: 4rem 1.5rem 3rem;
-        text-align: center;
+      .grid-container {
+        max-width: 1140px;
+        margin: 0 auto;
+        padding: 0 1.5rem 3rem;
       }
 
-      .d3-hero h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 800;
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.02em;
+      .tool-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 1rem;
       }
 
-      .d3-hero p {
-        color: var(--text-muted);
-        font-size: 1.1rem;
-        max-width: 520px;
-        margin: 0 auto 2.5rem;
-      }
-
-      .d3-preview {
-        max-width: 700px;
-        margin: 0 auto 3rem;
-        background: var(--bg-card);
+      .tool-card {
+        background: var(--bg-elevated);
         border: 1px solid var(--border);
         border-radius: var(--radius);
         overflow: hidden;
-        box-shadow: var(--shadow-lg);
-      }
-
-      .d3-preview-header {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        background: var(--bg-card-hover);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .d3-preview-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-      }
-
-      .d3-preview-dot:nth-child(1) {
-        background: #ef4444;
-      }
-
-      .d3-preview-dot:nth-child(2) {
-        background: #eab308;
-      }
-
-      .d3-preview-dot:nth-child(3) {
-        background: #22c55e;
-      }
-
-      .d3-preview-body {
-        padding: 2rem;
-        min-height: 200px;
+        cursor: pointer;
+        transition: all var(--transition);
         display: flex;
         flex-direction: column;
+      }
+
+      .tool-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-3px);
+        border-color: var(--accent);
+      }
+
+      .tool-card-thumb {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        background: var(--bg-hover);
+        display: block;
+      }
+
+      .tool-card-thumb-placeholder {
+        width: 100%;
+        height: 180px;
+        background: var(--bg-hover);
+        display: flex;
         align-items: center;
         justify-content: center;
-        gap: 1rem;
+        font-size: 2.5rem;
+        color: var(--text-muted);
+        user-select: none;
       }
 
-      .d3-preview-body textarea {
-        width: 100%;
-        max-width: 500px;
-        height: 80px;
-        padding: 0.75rem;
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        font-family: var(--font-mono);
-        font-size: 0.85rem;
-        background: var(--bg);
-        color: var(--text);
-        resize: vertical;
+      .tool-card-body {
+        padding: 1.1rem 1.25rem;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
       }
 
-      .d3-preview-body button {
-        font-family: var(--font);
-        padding: 0.6rem 1.5rem;
-        background: var(--accent);
-        color: white;
-        border: none;
-        border-radius: var(--radius-sm);
-        font-weight: 600;
-        cursor: pointer;
-        transition: background 0.2s;
+      .tool-card-body h3 {
+        font-size: 1rem;
+        font-weight: 650;
+        margin-bottom: 0.3rem;
       }
 
-      .d3-preview-body button:hover {
-        background: var(--accent-hover);
-      }
-
-      .d3-preview-body pre {
-        width: 100%;
-        max-width: 500px;
-        padding: 0.75rem;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        border-radius: var(--radius-sm);
-        font-family: var(--font-mono);
-        font-size: 0.8rem;
-        color: var(--text);
-        overflow-x: auto;
-        text-align: left;
-        white-space: pre-wrap;
-        min-height: 40px;
-      }
-
-      .d3-category-cards {
-        max-width: 1000px;
-        margin: 0 auto;
-        padding: 0 1.5rem 4rem;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.25rem;
-      }
-
-      .d3-cat-card {
-        background: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.5rem;
-        transition: all 0.25s;
-        cursor: pointer;
-      }
-
-      .d3-cat-card:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-4px);
-      }
-
-      .d3-cat-card .icon {
-        font-size: 1.8rem;
-        margin-bottom: 0.75rem;
-      }
-
-      .d3-cat-card h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 0.35rem;
-      }
-
-      .d3-cat-card p {
-        font-size: 0.85rem;
+      .tool-card-body p {
+        font-size: 0.83rem;
         color: var(--text-muted);
         margin-bottom: 0.75rem;
+        flex: 1;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
 
-      .d3-cat-card .count {
-        font-size: 0.8rem;
-        color: var(--accent);
+      .tool-card-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+      .tag {
+        display: inline-block;
+        font-size: 0.68rem;
         font-weight: 600;
+        padding: 0.18rem 0.5rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+      }
+
+      .tag-category { background: var(--tag-bg); color: var(--tag-text); }
+      .tag-easy { background: var(--easy-bg); color: var(--easy-text); }
+      .tag-medium { background: var(--medium-bg); color: var(--medium-text); }
+      .tag-live { background: var(--live-bg); color: var(--live-text); }
+      .tag-idea { background: var(--idea-bg); color: var(--idea-text); }
+
+      .no-results {
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--text-muted);
+        font-size: 1rem;
+        display: none;
       }
 
       /* ========================================
-         DESIGN 4: Terminal / Dev Aesthetic
-         Monospace, dark, command-line inspired
+         Modal
          ======================================== */
-      .d4-wrap {
-        background: #0c0c0c;
-        color: #d4d4d4;
-        min-height: 100vh;
-        font-family: var(--font-mono);
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 200;
+        background: var(--bg-overlay);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        padding: 2rem 1rem;
+        overflow-y: auto;
       }
 
-      .d4-header {
-        padding: 3rem 1.5rem;
-        max-width: 800px;
-        margin: 0 auto;
+      .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+      .modal {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        max-width: 700px;
+        width: 100%;
+        margin-top: 2vh;
+        box-shadow: var(--shadow-xl);
+        overflow: hidden;
+        animation: modalIn 0.25s ease;
       }
 
-      .d4-prompt {
-        color: var(--terminal-green);
-        font-size: 0.85rem;
-        margin-bottom: 0.25rem;
+      @keyframes modalIn {
+        from { opacity: 0; transform: translateY(16px) scale(0.98); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
       }
 
-      .d4-header h1 {
-        font-size: clamp(1.5rem, 4vw, 2.2rem);
-        font-weight: 700;
-        color: #fafafa;
-        margin-bottom: 0.5rem;
-        font-family: var(--font-mono);
+      .modal-thumb {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        background: var(--bg-hover);
+        display: block;
       }
 
-      .d4-header p {
-        color: var(--terminal-dim);
-        font-size: 0.9rem;
-        margin-bottom: 1.5rem;
+      .modal-thumb-placeholder {
+        width: 100%;
+        height: 200px;
+        background: var(--bg-hover);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: var(--text-muted);
+        user-select: none;
       }
 
-      .d4-cmd {
-        display: inline-block;
-        background: #1a1a1a;
-        border: 1px solid #2a2a2a;
-        border-radius: 6px;
-        padding: 0.6rem 1rem;
-        font-size: 0.85rem;
-        color: #d4d4d4;
-        margin-bottom: 0.5rem;
-      }
-
-      .d4-cmd span {
-        color: var(--terminal-green);
-      }
-
-      .d4-body {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 1.5rem 4rem;
-      }
-
-      .d4-section {
-        margin-bottom: 2.5rem;
-      }
-
-      .d4-section-header {
-        color: var(--terminal-green);
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        margin-bottom: 0.75rem;
-        padding-bottom: 0.4rem;
-        border-bottom: 1px solid #1e1e1e;
-      }
-
-      .d4-list {
-        list-style: none;
-      }
-
-      .d4-list li {
-        padding: 0.5rem 0;
-        border-bottom: 1px solid #1a1a1a;
+      .modal-header {
+        padding: 1.5rem 1.75rem 0;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         gap: 1rem;
-        font-size: 0.85rem;
       }
 
-      .d4-list li:last-child {
-        border-bottom: none;
-      }
+      .modal-header h2 { font-size: 1.4rem; font-weight: 700; }
 
-      .d4-list .name {
-        color: #fafafa;
-        font-weight: 600;
-      }
-
-      .d4-list .desc {
-        color: var(--terminal-dim);
-        font-size: 0.8rem;
-        flex: 1;
-      }
-
-      .d4-list .diff {
-        font-size: 0.7rem;
-        padding: 0.15rem 0.5rem;
-        border-radius: 3px;
+      .modal-close {
+        background: var(--bg-hover);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        width: 36px; height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: var(--text-muted);
+        transition: all var(--transition);
         flex-shrink: 0;
       }
 
-      .d4-list .diff-easy {
-        background: #064e3b;
-        color: #6ee7b7;
+      .modal-close:hover { background: var(--border); color: var(--text); }
+
+      .modal-meta {
+        padding: 0.75rem 1.75rem;
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
       }
 
-      .d4-list .diff-medium {
-        background: #78350f;
-        color: #fde68a;
+      .modal-links {
+        padding: 0 1.75rem;
+        display: flex;
+        gap: 0.6rem;
+        flex-wrap: wrap;
       }
 
-      .d4-ascii {
-        color: var(--terminal-green);
-        font-size: 0.65rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-        white-space: pre;
+      .modal-links .btn { font-size: 0.82rem; padding: 0.5rem 1rem; }
+      .btn-outline { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+      .btn-outline:hover { background: var(--accent); color: #fff; }
+
+      .modal-body {
+        padding: 1.25rem 1.75rem 1.75rem;
+      }
+
+      .modal-body h2 { font-size: 1.2rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+      .modal-body h3 { font-size: 1rem; font-weight: 650; margin: 1rem 0 0.4rem; }
+      .modal-body p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+      .modal-body ul, .modal-body ol { padding-left: 1.25rem; margin-bottom: 0.75rem; }
+      .modal-body li { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+      .modal-body code { font-family: var(--font-mono); font-size: 0.85em; background: var(--bg-hover); padding: 0.15rem 0.35rem; border-radius: 4px; }
+      .modal-body pre { background: var(--bg-hover); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 1rem; overflow-x: auto; margin-bottom: 0.75rem; }
+      .modal-body pre code { background: none; padding: 0; }
+
+      .modal-section {
+        border-top: 1px solid var(--border);
+        padding: 1rem 1.75rem;
+      }
+
+      .modal-section-title {
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--text-muted);
+        margin-bottom: 0.5rem;
+      }
+
+      .tech-stack { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+      .tech-badge {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.6rem;
+        background: var(--bg-hover);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        color: var(--text);
+        font-family: var(--font-mono);
+      }
+
+      .modal-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+
+      .modal-tag {
+        font-size: 0.75rem;
+        padding: 0.2rem 0.5rem;
+        background: var(--tag-bg);
+        color: var(--tag-text);
+        border-radius: 4px;
       }
 
       /* ========================================
-         DESIGN 5: Bento Grid
-         Mixed-size cards for stats, categories,
-         featured tools, and philosophy
+         SSoC Banner
          ======================================== */
-      .d5-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 4rem;
+      .ssoc-banner {
+        max-width: 1140px;
+        margin: 0 auto 2rem;
+        padding: 0 1.5rem;
       }
 
-      .d5-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 1rem;
-      }
-
-      .d5-cell {
-        background: var(--bg-card);
+      .ssoc-card {
+        background: var(--bg-elevated);
         border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 1.5rem;
-        transition: all 0.25s;
-      }
-
-      .d5-cell:hover {
-        box-shadow: var(--shadow);
-      }
-
-      .d5-cell.span-2 {
-        grid-column: span 2;
-      }
-
-      .d5-cell.span-3 {
-        grid-column: span 3;
-      }
-
-      .d5-cell.span-4 {
-        grid-column: span 4;
-      }
-
-      .d5-cell.hero-cell {
-        grid-column: span 4;
-        text-align: center;
-        padding: 3.5rem 2rem;
-        background: var(--bg-hero);
-        color: var(--text-hero);
-        border-color: #27272a;
-      }
-
-      .d5-cell.hero-cell h1 {
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 800;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-      }
-
-      .d5-cell.hero-cell p {
-        color: var(--text-hero-muted);
-        font-size: 1.05rem;
-      }
-
-      .d5-stat-cell {
-        text-align: center;
-      }
-
-      .d5-stat-cell .num {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--accent);
-      }
-
-      .d5-stat-cell .label {
-        font-size: 0.8rem;
-        color: var(--text-muted);
-        margin-top: 0.2rem;
-      }
-
-      .d5-cell h3 {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 0.75rem;
-      }
-
-      .d5-cell .icon {
-        font-size: 1.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .d5-tool-list {
-        list-style: none;
-      }
-
-      .d5-tool-list li {
-        font-size: 0.85rem;
-        padding: 0.3rem 0;
-        color: var(--text-muted);
-      }
-
-      .d5-philosophy {
-        font-size: 0.9rem;
-        line-height: 1.8;
-      }
-
-      .d5-philosophy strong {
-        color: var(--accent);
-      }
-
-      .d5-cta-cell {
+        padding: 1.75rem 2rem;
         display: flex;
-        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        text-align: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .ssoc-card .ssoc-icon { font-size: 2.5rem; flex-shrink: 0; }
+      .ssoc-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+      .ssoc-card p { font-size: 0.88rem; color: var(--text-muted); }
+      .ssoc-card .ssoc-content { flex: 1; min-width: 200px; }
+
+      .ssoc-points {
+        display: flex;
         gap: 1rem;
+        flex-shrink: 0;
       }
 
-      .d5-cta-cell a {
-        display: inline-block;
-        padding: 0.65rem 1.5rem;
-        background: var(--accent);
-        color: white;
+      .ssoc-point {
+        text-align: center;
+        padding: 0.5rem 1rem;
+        background: var(--bg-hover);
         border-radius: var(--radius-sm);
-        font-weight: 600;
-        font-size: 0.9rem;
-        text-decoration: none;
-        transition: background 0.2s;
       }
 
-      .d5-cta-cell a:hover {
-        background: var(--accent-hover);
-        text-decoration: none;
-      }
+      .ssoc-point .pts { font-size: 1.2rem; font-weight: 800; color: var(--accent); }
+      .ssoc-point .lbl { font-size: 0.7rem; color: var(--text-muted); }
 
       /* ========================================
-         Shared Footer
+         Footer
          ======================================== */
       .site-footer {
         text-align: center;
         padding: 2rem 1.5rem;
         border-top: 1px solid var(--border);
         color: var(--text-muted);
-        font-size: 0.85rem;
+        font-size: 0.83rem;
       }
 
-      .site-footer a {
-        color: var(--text);
-        font-weight: 600;
-      }
+      .site-footer a { color: var(--text); font-weight: 600; }
+      .site-footer a:hover { color: var(--accent); }
+      .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.5rem; }
 
       /* ========================================
          Responsive
          ======================================== */
       @media (max-width: 768px) {
-        .d5-grid {
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .d5-cell.span-3,
-        .d5-cell.span-4,
-        .d5-cell.hero-cell {
-          grid-column: span 2;
-        }
-
-        .d2-stats {
-          gap: 1.5rem;
-        }
-
-        .design-switcher {
-          padding: 0.5rem 0.75rem;
-        }
-
-        .design-switcher label {
-          font-size: 0.7rem;
-        }
-
-        .design-switcher button {
-          font-size: 0.7rem;
-          padding: 0.3rem 0.6rem;
-        }
+        .hero { padding: 3.5rem 1.25rem 3rem; }
+        .stats { gap: 1.5rem; }
+        .tool-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+        .modal { margin-top: 0; border-radius: var(--radius) var(--radius) 0 0; }
+        .nav-links a.hide-mobile { display: none; }
+        .ssoc-card { flex-direction: column; text-align: center; }
+        .ssoc-points { justify-content: center; }
       }
 
       @media (max-width: 480px) {
-        .d5-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .d5-cell.span-2,
-        .d5-cell.span-3,
-        .d5-cell.span-4,
-        .d5-cell.hero-cell {
-          grid-column: span 1;
-        }
-
-        .d1-grid {
-          grid-template-columns: 1fr;
-        }
+        .tool-grid { grid-template-columns: 1fr; }
+        .tool-card-thumb, .tool-card-thumb-placeholder { height: 150px; }
+        .modal-thumb, .modal-thumb-placeholder { height: 160px; }
       }
     </style>
   </head>
   <body>
-    <!-- ========================================
-         Design Switcher Bar
-         ======================================== -->
-    <nav class="design-switcher">
-      <label>Pick a design:</label>
-      <div class="buttons">
-        <button class="active" onclick="switchDesign('d1', this)">1. Tool Directory</button>
-        <button onclick="switchDesign('d2', this)">2. Hero + Scroll</button>
-        <button onclick="switchDesign('d3', this)">3. Interactive Showcase</button>
-        <button onclick="switchDesign('d4', this)">4. Terminal / Dev</button>
-        <button onclick="switchDesign('d5', this)">5. Bento Grid</button>
+    <!-- Nav -->
+    <nav class="nav">
+      <a href="/" class="nav-brand">🛠️ One File Tools</a>
+      <div class="nav-links">
+        <a href="https://github.com/praveenscience/One-File-Tools" class="hide-mobile">GitHub</a>
+        <a href="Contributing.md">Contribute</a>
+        <a href="https://portal.socialsummerofcode.com/">SSoC</a>
+        <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle dark/light theme">
+          <span id="theme-icon">&#9790;</span>
+        </button>
       </div>
-      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark/light mode">
-        <span id="theme-icon">&#9790;</span>
-      </button>
     </nav>
 
-    <!-- ========================================
-         DESIGN 1: Tool Directory
-         ======================================== -->
-    <section id="d1" class="design-section active">
-      <header class="d1-header">
-        <h1>One File Tools</h1>
-        <p>Developer tools, one file each. No build step. No dependencies. No frameworks.</p>
-        <div class="d1-search">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" stroke-linecap="round" />
-          </svg>
-          <input type="text" placeholder="Search tools..." />
-        </div>
-      </header>
-
-      <div class="d1-filters">
-        <button class="active">All</button>
-        <button>Web & SEO</button>
-        <button>Image</button>
-        <button>Color</button>
-        <button>CSS</button>
-        <button>Text</button>
-        <button>JSON & API</button>
-        <button>Utilities</button>
-        <button>Accessibility</button>
-      </div>
-
-      <div class="d1-grid">
-        <div class="d1-card">
-          <h3>Open Graph Generator</h3>
-          <p>Generate OG meta tags and preview cards for social sharing.</p>
-          <div class="tags"><span class="tag tag-category">Web & SEO</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>JSON Formatter</h3>
-          <p>Format, validate, and minify JSON with syntax highlighting.</p>
-          <div class="tags"><span class="tag tag-category">JSON & API</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>Color Picker</h3>
-          <p>Pick colors and get output in HEX, RGB, and HSL formats.</p>
-          <div class="tags"><span class="tag tag-category">Color</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>CSS Grid Generator</h3>
-          <p>Build CSS Grid layouts visually with code export.</p>
-          <div class="tags"><span class="tag tag-category">CSS</span> <span class="tag tag-medium">Medium</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>Regex Tester</h3>
-          <p>Test regular expressions with live matching and group highlighting.</p>
-          <div class="tags"><span class="tag tag-category">Utilities</span> <span class="tag tag-medium">Medium</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>Contrast Checker</h3>
-          <p>Check WCAG 2.1 AA/AAA contrast compliance between colors.</p>
-          <div class="tags"><span class="tag tag-category">Accessibility</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>JWT Decoder</h3>
-          <p>Decode and inspect JSON Web Token header and payload.</p>
-          <div class="tags"><span class="tag tag-category">JSON & API</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>Image Dimension Checker</h3>
-          <p>Inspect width, height, and aspect ratio of any image.</p>
-          <div class="tags"><span class="tag tag-category">Image</span> <span class="tag tag-easy">Easy</span></div>
-        </div>
-        <div class="d1-card">
-          <h3>Box Shadow Generator</h3>
-          <p>Design CSS box shadows with live preview and code output.</p>
-          <div class="tags"><span class="tag tag-category">CSS</span> <span class="tag tag-easy">Easy</span></div>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>One tool. <span class="gradient">One file.</span><br>Open and use.</h1>
+        <p>A collection of useful developer tools, each built as a single, self-contained HTML file. No build step. No dependencies. No frameworks.</p>
+        <div class="hero-buttons">
+          <a href="#tools" class="btn btn-primary">Browse Tools</a>
+          <a href="https://github.com/praveenscience/One-File-Tools" class="btn btn-ghost">GitHub</a>
+          <a href="Contributing.md" class="btn btn-ghost">Contribute</a>
         </div>
       </div>
+    </section>
 
-      <footer class="site-footer">
-        Built by <a href="https://praveen.science">Praveen Kumar Purushothaman</a> &middot;
-        <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a> &middot;
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">32+</div>
+        <div class="stat-label">Tool Ideas</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Categories</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Live Tools</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Dependencies</div>
+      </div>
+    </div>
+
+    <!-- SSoC Banner -->
+    <div class="ssoc-banner">
+      <div class="ssoc-card">
+        <div class="ssoc-icon">🎓</div>
+        <div class="ssoc-content">
+          <h3>Social Summer of Code</h3>
+          <p>This project is part of <a href="https://portal.socialsummerofcode.com/">SSoC</a>. Pick an issue, build a tool in a single HTML file, submit a PR, and earn points on the <a href="https://portal.socialsummerofcode.com/leaderboard">leaderboard</a>.</p>
+        </div>
+        <div class="ssoc-points">
+          <div class="ssoc-point">
+            <div class="pts">20</div>
+            <div class="lbl">Easy</div>
+          </div>
+          <div class="ssoc-point">
+            <div class="pts">30</div>
+            <div class="lbl">Medium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search & Filters -->
+    <div id="tools" class="controls">
+      <div class="search-bar">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+        <input type="text" id="search-input" placeholder="Search tools..." autocomplete="off" />
+      </div>
+      <div class="filters" id="filter-buttons">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="web-seo">🌐 Web &amp; SEO</button>
+        <button class="filter-btn" data-category="image">🖼️ Image Tools</button>
+        <button class="filter-btn" data-category="color">🌈 Color Tools</button>
+        <button class="filter-btn" data-category="css">🎨 CSS Tools</button>
+        <button class="filter-btn" data-category="text">📝 Text &amp; Content</button>
+        <button class="filter-btn" data-category="json-api">🔗 JSON &amp; API</button>
+        <button class="filter-btn" data-category="utilities">🛠️ Developer Utilities</button>
+        <button class="filter-btn" data-category="browser-network">🌐 Browser &amp; Network</button>
+        <button class="filter-btn" data-category="accessibility">♿ Accessibility</button>
+      </div>
+      <div class="results-count" id="results-count"></div>
+    </div>
+
+    <!-- Tool Grid -->
+    <div class="grid-container">
+      <div class="tool-grid" id="tool-grid">
+        <div class="tool-card" data-id="og-generator" data-category="web-seo" data-search="open graph generator generate open graph meta tags and preview how your links appear on social media. open-graph meta-tags seo social-media preview">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Open Graph Generator</h3>
+            <p>Generate Open Graph meta tags and preview how your links appear on social media.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Web &amp; SEO</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="og-checker" data-category="web-seo" data-search="open graph checker validate and preview existing open graph tags from any url. open-graph validator seo meta-tags">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Open Graph Checker</h3>
+            <p>Validate and preview existing Open Graph tags from any URL.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Web &amp; SEO</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="meta-tag-generator" data-category="web-seo" data-search="meta tag generator create standard html meta tags for seo, social sharing, and browser behavior. meta-tags seo html generator">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Meta Tag Generator</h3>
+            <p>Create standard HTML meta tags for SEO, social sharing, and browser behavior.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Web &amp; SEO</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="twitter-card-preview" data-category="web-seo" data-search="twitter / x card preview preview how your links will appear when shared on twitter / x. twitter card preview social-media">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Twitter / X Card Preview</h3>
+            <p>Preview how your links will appear when shared on Twitter / X.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Web &amp; SEO</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="robots-txt-generator" data-category="web-seo" data-search="robots.txt generator build a robots.txt file visually with user-agent rules and sitemaps. robots seo crawler generator">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Robots.txt Generator</h3>
+            <p>Build a robots.txt file visually with user-agent rules and sitemaps.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Web &amp; SEO</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="json-formatter" data-category="json-api" data-search="json formatter format, validate, and minify json with syntax highlighting and error detection. json formatter validator minify prettify">
+          <div class="tool-card-thumb-placeholder">🔗</div>
+          <div class="tool-card-body">
+            <h3>JSON Formatter</h3>
+            <p>Format, validate, and minify JSON with syntax highlighting and error detection.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">JSON &amp; API</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="jwt-decoder" data-category="json-api" data-search="jwt decoder decode and inspect json web token header, payload, and signature. jwt decoder token authentication">
+          <div class="tool-card-thumb-placeholder">🔗</div>
+          <div class="tool-card-body">
+            <h3>JWT Decoder</h3>
+            <p>Decode and inspect JSON Web Token header, payload, and signature.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">JSON &amp; API</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="url-encoder-decoder" data-category="json-api" data-search="url encoder / decoder encode and decode url strings, query parameters, and uri components. url encoder decoder uri">
+          <div class="tool-card-thumb-placeholder">🔗</div>
+          <div class="tool-card-body">
+            <h3>URL Encoder / Decoder</h3>
+            <p>Encode and decode URL strings, query parameters, and URI components.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">JSON &amp; API</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="base64-encoder-decoder" data-category="json-api" data-search="base64 encoder / decoder encode and decode base64 strings for text, data uris, and binary data. base64 encoder decoder data-uri">
+          <div class="tool-card-thumb-placeholder">🔗</div>
+          <div class="tool-card-body">
+            <h3>Base64 Encoder / Decoder</h3>
+            <p>Encode and decode Base64 strings for text, data URIs, and binary data.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">JSON &amp; API</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="color-picker" data-category="color" data-search="color picker pick colors and get output in hex, rgb, hsl, and oklch formats. color picker hex rgb hsl">
+          <div class="tool-card-thumb-placeholder">🌈</div>
+          <div class="tool-card-body">
+            <h3>Color Picker</h3>
+            <p>Pick colors and get output in HEX, RGB, HSL, and OKLCH formats.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Color Tools</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="contrast-checker" data-category="accessibility" data-search="contrast checker check wcag 2.1 aa and aaa contrast ratio compliance between two colors. contrast wcag accessibility a11y color">
+          <div class="tool-card-thumb-placeholder">♿</div>
+          <div class="tool-card-body">
+            <h3>Contrast Checker</h3>
+            <p>Check WCAG 2.1 AA and AAA contrast ratio compliance between two colors.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Accessibility</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="gradient-builder" data-category="color" data-search="gradient builder create css linear and radial gradients visually with live preview. gradient css color generator">
+          <div class="tool-card-thumb-placeholder">🌈</div>
+          <div class="tool-card-body">
+            <h3>Gradient Builder</h3>
+            <p>Create CSS linear and radial gradients visually with live preview.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Color Tools</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="box-shadow-generator" data-category="css" data-search="box shadow generator design css box shadows with live preview, multiple layers, and code export. box-shadow css generator design">
+          <div class="tool-card-thumb-placeholder">🎨</div>
+          <div class="tool-card-body">
+            <h3>Box Shadow Generator</h3>
+            <p>Design CSS box shadows with live preview, multiple layers, and code export.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">CSS Tools</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="css-grid-generator" data-category="css" data-search="css grid generator build css grid layouts visually with interactive rows, columns, and areas. css-grid layout generator design">
+          <div class="tool-card-thumb-placeholder">🎨</div>
+          <div class="tool-card-body">
+            <h3>CSS Grid Generator</h3>
+            <p>Build CSS Grid layouts visually with interactive rows, columns, and areas.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">CSS Tools</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="flexbox-playground" data-category="css" data-search="flexbox playground experiment with flexbox properties and see the effects in real time. flexbox css layout playground">
+          <div class="tool-card-thumb-placeholder">🎨</div>
+          <div class="tool-card-body">
+            <h3>Flexbox Playground</h3>
+            <p>Experiment with Flexbox properties and see the effects in real time.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">CSS Tools</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="image-dimension-checker" data-category="image" data-search="image dimension checker drop or upload an image to instantly see its width, height, and aspect ratio. image dimensions aspect-ratio size">
+          <div class="tool-card-thumb-placeholder">🖼️</div>
+          <div class="tool-card-body">
+            <h3>Image Dimension Checker</h3>
+            <p>Drop or upload an image to instantly see its width, height, and aspect ratio.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Image Tools</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="svg-previewer" data-category="image" data-search="svg previewer paste svg code and preview it instantly with zoom and background options. svg preview viewer vector">
+          <div class="tool-card-thumb-placeholder">🖼️</div>
+          <div class="tool-card-body">
+            <h3>SVG Previewer</h3>
+            <p>Paste SVG code and preview it instantly with zoom and background options.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Image Tools</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="lorem-ipsum-generator" data-category="text" data-search="lorem ipsum generator generate placeholder text in paragraphs, sentences, or words. lorem-ipsum placeholder text generator">
+          <div class="tool-card-thumb-placeholder">📝</div>
+          <div class="tool-card-body">
+            <h3>Lorem Ipsum Generator</h3>
+            <p>Generate placeholder text in paragraphs, sentences, or words.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Text &amp; Content</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="word-character-counter" data-category="text" data-search="word / character counter count words, characters, sentences, and paragraphs with reading time. word-count character-count text statistics">
+          <div class="tool-card-thumb-placeholder">📝</div>
+          <div class="tool-card-body">
+            <h3>Word / Character Counter</h3>
+            <p>Count words, characters, sentences, and paragraphs with reading time.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Text &amp; Content</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="case-converter" data-category="text" data-search="case converter transform text between camelcase, snake_case, upper, lower, title, and more. case converter text camelcase snake_case">
+          <div class="tool-card-thumb-placeholder">📝</div>
+          <div class="tool-card-body">
+            <h3>Case Converter</h3>
+            <p>Transform text between camelCase, snake_case, UPPER, lower, Title, and more.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Text &amp; Content</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="regex-tester" data-category="utilities" data-search="regex tester test regular expressions with live matching, group highlighting, and flags. regex tester regular-expression pattern">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>Regex Tester</h3>
+            <p>Test regular expressions with live matching, group highlighting, and flags.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="uuid-generator" data-category="utilities" data-search="uuid generator generate random v4 uuids instantly with bulk generation support. uuid generator random identifier">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>UUID Generator</h3>
+            <p>Generate random v4 UUIDs instantly with bulk generation support.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="timestamp-converter" data-category="utilities" data-search="timestamp converter convert unix timestamps to human-readable dates and vice versa. timestamp unix date converter epoch">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>Timestamp Converter</h3>
+            <p>Convert Unix timestamps to human-readable dates and vice versa.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="hash-generator" data-category="utilities" data-search="hash generator generate md5, sha-1, sha-256, and sha-512 hashes from text input. hash md5 sha cryptography generator">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>Hash Generator</h3>
+            <p>Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text input.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="password-generator" data-category="utilities" data-search="password generator generate strong random passwords with customizable length and characters. password generator security random">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>Password Generator</h3>
+            <p>Generate strong random passwords with customizable length and characters.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="qr-code-generator" data-category="utilities" data-search="qr code generator create qr codes from text, urls, or data with download options. qr-code generator barcode">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>QR Code Generator</h3>
+            <p>Create QR codes from text, URLs, or data with download options.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="markdown-previewer" data-category="text" data-search="markdown previewer write markdown on the left, see rendered html on the right in real time. markdown preview editor html">
+          <div class="tool-card-thumb-placeholder">📝</div>
+          <div class="tool-card-body">
+            <h3>Markdown Previewer</h3>
+            <p>Write Markdown on the left, see rendered HTML on the right in real time.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Text &amp; Content</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="slug-generator" data-category="text" data-search="slug generator convert text to url-friendly slugs with customizable separators. slug url generator text">
+          <div class="tool-card-thumb-placeholder">📝</div>
+          <div class="tool-card-body">
+            <h3>Slug Generator</h3>
+            <p>Convert text to URL-friendly slugs with customizable separators.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Text &amp; Content</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="cron-expression-builder" data-category="utilities" data-search="cron expression builder build and understand cron schedule expressions with a visual interface. cron scheduler expression builder">
+          <div class="tool-card-thumb-placeholder">🛠️</div>
+          <div class="tool-card-body">
+            <h3>Cron Expression Builder</h3>
+            <p>Build and understand cron schedule expressions with a visual interface.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Developer Utilities</span>
+              <span class="tag tag-medium">Medium</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="user-agent-parser" data-category="browser-network" data-search="user agent parser parse and explain browser user agent strings into readable components. user-agent parser browser detection">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>User Agent Parser</h3>
+            <p>Parse and explain browser user agent strings into readable components.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Browser &amp; Network</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="viewport-screen-info" data-category="browser-network" data-search="viewport / screen info display current device viewport, screen dimensions, and pixel ratio. viewport screen resolution responsive">
+          <div class="tool-card-thumb-placeholder">🌐</div>
+          <div class="tool-card-body">
+            <h3>Viewport / Screen Info</h3>
+            <p>Display current device viewport, screen dimensions, and pixel ratio.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Browser &amp; Network</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+        <div class="tool-card" data-id="heading-structure-visualizer" data-category="accessibility" data-search="heading structure visualizer paste html or a url to visualize the heading hierarchy and spot issues. headings structure accessibility a11y html">
+          <div class="tool-card-thumb-placeholder">♿</div>
+          <div class="tool-card-body">
+            <h3>Heading Structure Visualizer</h3>
+            <p>Paste HTML or a URL to visualize the heading hierarchy and spot issues.</p>
+            <div class="tool-card-tags">
+              <span class="tag tag-category">Accessibility</span>
+              <span class="tag tag-easy">Easy</span>
+              <span class="tag tag-idea">Idea</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="no-results" id="no-results">No tools found matching your search.</div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal-overlay" id="modal-overlay">
+      <div class="modal" id="modal">
+        <div id="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-links">
+        <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a>
+        <a href="Contributing.md">Contributing</a>
         <a href="https://portal.socialsummerofcode.com/">SSoC</a>
-      </footer>
-    </section>
-
-    <!-- ========================================
-         DESIGN 2: Hero + Scroll
-         ======================================== -->
-    <section id="d2" class="design-section">
-      <div class="d2-hero">
-        <div class="d2-hero-content">
-          <h1>One tool.<br /><span>One file.</span><br />Open and use.</h1>
-          <p>A growing collection of developer utilities, each built as a single self-contained HTML file. No npm. No frameworks. No servers.</p>
-          <div class="d2-hero-buttons">
-            <a href="#d2-tools" class="d2-btn-primary">Browse Tools</a>
-            <a href="https://github.com/praveenscience/One-File-Tools" class="d2-btn-secondary">View on GitHub</a>
-            <a href="CONTRIBUTING.md" class="d2-btn-secondary">Contribute</a>
-          </div>
-        </div>
+        <a href="https://portal.socialsummerofcode.com/leaderboard">Leaderboard</a>
       </div>
+      <p>Built by <a href="https://praveen.science">Praveen Kumar Purushothaman</a>. Open source with purpose, one file at a time.</p>
+    </footer>
 
-      <div class="d2-stats">
-        <div class="d2-stat">
-          <div class="num">60+</div>
-          <div class="label">Tool Ideas</div>
-        </div>
-        <div class="d2-stat">
-          <div class="num">9</div>
-          <div class="label">Categories</div>
-        </div>
-        <div class="d2-stat">
-          <div class="num">0 KB</div>
-          <div class="label">npm install</div>
-        </div>
-        <div class="d2-stat">
-          <div class="num">100%</div>
-          <div class="label">Browser-based</div>
-        </div>
-      </div>
-
-      <div id="d2-tools" class="d2-categories">
-        <div class="d2-category">
-          <h2>Web & SEO</h2>
-          <div class="d2-category-grid">
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#127760;</div>
-              <div class="d2-tool-info">
-                <h4>Open Graph Generator</h4>
-                <p>Generate OG meta tags and preview cards</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#128269;</div>
-              <div class="d2-tool-info">
-                <h4>Meta Tag Generator</h4>
-                <p>Create standard HTML meta tags</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#129302;</div>
-              <div class="d2-tool-info">
-                <h4>Robots.txt Generator</h4>
-                <p>Build robots.txt files visually</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d2-category">
-          <h2>JSON & API</h2>
-          <div class="d2-category-grid">
-            <div class="d2-tool">
-              <div class="d2-tool-icon">{ }</div>
-              <div class="d2-tool-info">
-                <h4>JSON Formatter</h4>
-                <p>Format, validate, and minify JSON</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#128273;</div>
-              <div class="d2-tool-info">
-                <h4>JWT Decoder</h4>
-                <p>Decode and inspect JWT tokens</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#128279;</div>
-              <div class="d2-tool-info">
-                <h4>URL Encoder / Decoder</h4>
-                <p>Encode and decode URL strings</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d2-category">
-          <h2>CSS Tools</h2>
-          <div class="d2-category-grid">
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#9632;</div>
-              <div class="d2-tool-info">
-                <h4>Box Shadow Generator</h4>
-                <p>Design box shadows with live preview</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#9638;</div>
-              <div class="d2-tool-info">
-                <h4>CSS Grid Generator</h4>
-                <p>Build grid layouts visually</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#10023;</div>
-              <div class="d2-tool-info">
-                <h4>Glassmorphism Generator</h4>
-                <p>Create frosted glass effects</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="d2-category">
-          <h2>Developer Utilities</h2>
-          <div class="d2-category-grid">
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#128737;</div>
-              <div class="d2-tool-info">
-                <h4>UUID Generator</h4>
-                <p>Generate v4 UUIDs instantly</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#128274;</div>
-              <div class="d2-tool-info">
-                <h4>Password Generator</h4>
-                <p>Generate strong random passwords</p>
-              </div>
-            </div>
-            <div class="d2-tool">
-              <div class="d2-tool-icon">&#9881;</div>
-              <div class="d2-tool-info">
-                <h4>Hash Generator</h4>
-                <p>Generate MD5, SHA-1, SHA-256 hashes</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <footer class="site-footer">
-        Built by <a href="https://praveen.science">Praveen Kumar Purushothaman</a> &middot;
-        <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a> &middot;
-        <a href="https://portal.socialsummerofcode.com/">SSoC</a>
-      </footer>
-    </section>
-
-    <!-- ========================================
-         DESIGN 3: Interactive Showcase
-         ======================================== -->
-    <section id="d3" class="design-section">
-      <div class="d3-hero">
-        <h1>One File Tools</h1>
-        <p>Try a tool right here. Every tool is a single HTML file you can download and use anywhere.</p>
-      </div>
-
-      <div class="d3-preview">
-        <div class="d3-preview-header">
-          <div class="d3-preview-dot"></div>
-          <div class="d3-preview-dot"></div>
-          <div class="d3-preview-dot"></div>
-          <span style="margin-left: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">json-formatter.html</span>
-        </div>
-        <div class="d3-preview-body">
-          <textarea id="d3-json-input" placeholder='Paste JSON here, e.g. {"name":"One File Tools","type":"awesome"}'></textarea>
-          <button onclick="formatJSON()">Format JSON</button>
-          <pre id="d3-json-output">Formatted output will appear here...</pre>
-        </div>
-      </div>
-
-      <div class="d3-category-cards">
-        <div class="d3-cat-card">
-          <div class="icon">&#127760;</div>
-          <h3>Web & SEO</h3>
-          <p>OG generators, meta tag builders, robots.txt, sitemaps, and more.</p>
-          <span class="count">9 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#127912;</div>
-          <h3>Image Tools</h3>
-          <p>Dimension checkers, SVG previewers, Base64 converters, favicons.</p>
-          <span class="count">8 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#127752;</div>
-          <h3>Color Tools</h3>
-          <p>Color pickers, contrast checkers, palette generators, gradients.</p>
-          <span class="count">6 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#9998;</div>
-          <h3>CSS Tools</h3>
-          <p>Box shadows, grids, flexbox, glassmorphism, neumorphism.</p>
-          <span class="count">9 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#128221;</div>
-          <h3>Text & Content</h3>
-          <p>Lorem ipsum, word counters, case converters, Markdown preview.</p>
-          <span class="count">7 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">{ }</div>
-          <h3>JSON & API</h3>
-          <p>JSON formatters, JWT decoders, URL encoders, curl builders.</p>
-          <span class="count">7 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#128736;</div>
-          <h3>Developer Utilities</h3>
-          <p>UUIDs, timestamps, regex, cron, hashes, passwords, QR codes.</p>
-          <span class="count">7 tools</span>
-        </div>
-        <div class="d3-cat-card">
-          <div class="icon">&#9855;</div>
-          <h3>Accessibility</h3>
-          <p>Contrast checkers, heading visualizers, ARIA references.</p>
-          <span class="count">4 tools</span>
-        </div>
-      </div>
-
-      <footer class="site-footer">
-        Built by <a href="https://praveen.science">Praveen Kumar Purushothaman</a> &middot;
-        <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a> &middot;
-        <a href="https://portal.socialsummerofcode.com/">SSoC</a>
-      </footer>
-    </section>
-
-    <!-- ========================================
-         DESIGN 4: Terminal / Dev Aesthetic
-         ======================================== -->
-    <section id="d4" class="design-section">
-      <div class="d4-wrap">
-        <div class="d4-header">
-          <pre class="d4-ascii">
-  ___  _  _ ___   ___ ___ _    ___   _____ ___   ___  _    ___
- / _ \| \| | __| | __|_ _| |  | __| |_   _/ _ \ / _ \| |  / __|
-| (_) | .` | _|  | _| | || |__| _|    | || (_) | (_) | |__\__ \
- \___/|_|\_|___| |_| |___|____|___|   |_| \___/ \___/|____|___/
-          </pre>
-          <div class="d4-prompt">~/one-file-tools $</div>
-          <h1>One File Tools</h1>
-          <p>Developer tools. Single HTML files. Zero dependencies.</p>
-          <div class="d4-cmd"><span>$</span> open tools/json-formatter.html</div>
-          <br />
-          <div class="d4-cmd"><span>$</span> # That's it. No npm. No build. No server.</div>
-        </div>
-
-        <div class="d4-body">
-          <div class="d4-section">
-            <div class="d4-section-header">// Web & SEO</div>
-            <ul class="d4-list">
-              <li><span class="name">og-generator</span> <span class="desc">Generate OG meta tags and preview cards</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">og-checker</span> <span class="desc">Validate existing OG tags from a URL</span> <span class="diff diff-medium">MED</span></li>
-              <li><span class="name">meta-tag-gen</span> <span class="desc">Create standard HTML meta tags</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">robots-txt-gen</span> <span class="desc">Build robots.txt visually</span> <span class="diff diff-easy">EASY</span></li>
-            </ul>
-          </div>
-
-          <div class="d4-section">
-            <div class="d4-section-header">// JSON & API</div>
-            <ul class="d4-list">
-              <li><span class="name">json-formatter</span> <span class="desc">Format, validate, and minify JSON</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">jwt-decoder</span> <span class="desc">Decode and inspect JWT tokens</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">url-encoder</span> <span class="desc">Encode and decode URL strings</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">curl-builder</span> <span class="desc">Build curl commands visually</span> <span class="diff diff-medium">MED</span></li>
-            </ul>
-          </div>
-
-          <div class="d4-section">
-            <div class="d4-section-header">// CSS Tools</div>
-            <ul class="d4-list">
-              <li><span class="name">box-shadow-gen</span> <span class="desc">Design box shadows with live preview</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">gradient-builder</span> <span class="desc">Create CSS gradients visually</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">grid-generator</span> <span class="desc">Build CSS Grid layouts visually</span> <span class="diff diff-medium">MED</span></li>
-              <li><span class="name">flexbox-play</span> <span class="desc">Experiment with Flexbox properties</span> <span class="diff diff-medium">MED</span></li>
-            </ul>
-          </div>
-
-          <div class="d4-section">
-            <div class="d4-section-header">// Developer Utilities</div>
-            <ul class="d4-list">
-              <li><span class="name">uuid-gen</span> <span class="desc">Generate v4 UUIDs</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">hash-gen</span> <span class="desc">Generate MD5, SHA-1, SHA-256 hashes</span> <span class="diff diff-easy">EASY</span></li>
-              <li><span class="name">regex-tester</span> <span class="desc">Test regex with live matching</span> <span class="diff diff-medium">MED</span></li>
-              <li><span class="name">password-gen</span> <span class="desc">Generate strong random passwords</span> <span class="diff diff-easy">EASY</span></li>
-            </ul>
-          </div>
-
-          <div class="d4-section">
-            <div class="d4-section-header">// Links</div>
-            <ul class="d4-list">
-              <li><a href="https://github.com/praveenscience/One-File-Tools" style="color: #4ade80;">GitHub Repository</a></li>
-              <li><a href="CONTRIBUTING.md" style="color: #4ade80;">Contributing Guide</a></li>
-              <li><a href="https://portal.socialsummerofcode.com/" style="color: #4ade80;">SSoC Portal</a></li>
-              <li><a href="https://praveen.science" style="color: #4ade80;">Praveen Kumar Purushothaman</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================
-         DESIGN 5: Bento Grid
-         ======================================== -->
-    <section id="d5" class="design-section">
-      <div class="d5-container">
-        <div class="d5-grid">
-          <!-- Hero -->
-          <div class="d5-cell hero-cell">
-            <h1>One File Tools</h1>
-            <p>Developer tools, one file each. No build step. No dependencies. No frameworks.</p>
-          </div>
-
-          <!-- Stats -->
-          <div class="d5-cell d5-stat-cell">
-            <div class="num">60+</div>
-            <div class="label">Tool Ideas</div>
-          </div>
-          <div class="d5-cell d5-stat-cell">
-            <div class="num">9</div>
-            <div class="label">Categories</div>
-          </div>
-          <div class="d5-cell d5-stat-cell">
-            <div class="num">0</div>
-            <div class="label">Dependencies</div>
-          </div>
-          <div class="d5-cell d5-stat-cell">
-            <div class="num">1</div>
-            <div class="label">File per Tool</div>
-          </div>
-
-          <!-- Philosophy -->
-          <div class="d5-cell span-2">
-            <div class="icon">&#128161;</div>
-            <h3>Philosophy</h3>
-            <div class="d5-philosophy">
-              <strong>One file.</strong> Each tool is a single .html file.<br />
-              <strong>Zero build.</strong> No npm install, no bundler, no server.<br />
-              <strong>Browser only.</strong> Runs entirely client-side.<br />
-              <strong>Open source.</strong> Unlicense. Do what you want.
-            </div>
-          </div>
-
-          <!-- CTA -->
-          <div class="d5-cell span-2 d5-cta-cell">
-            <h3>Start Contributing</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Pick a tool, build it in a single HTML file, and submit a PR.</p>
-            <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;">
-              <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a>
-              <a href="CONTRIBUTING.md" style="background: transparent; border: 1px solid var(--border); color: var(--text);">Contributing Guide</a>
-            </div>
-          </div>
-
-          <!-- Categories -->
-          <div class="d5-cell">
-            <div class="icon">&#127760;</div>
-            <h3>Web & SEO</h3>
-            <ul class="d5-tool-list">
-              <li>OG Generator</li>
-              <li>Meta Tag Builder</li>
-              <li>Robots.txt Generator</li>
-              <li>JSON-LD Builder</li>
-            </ul>
-          </div>
-
-          <div class="d5-cell">
-            <div class="icon">&#127912;</div>
-            <h3>Image Tools</h3>
-            <ul class="d5-tool-list">
-              <li>Dimension Checker</li>
-              <li>SVG Previewer</li>
-              <li>Base64 Converter</li>
-              <li>Favicon Generator</li>
-            </ul>
-          </div>
-
-          <div class="d5-cell">
-            <div class="icon">&#127752;</div>
-            <h3>Color & CSS</h3>
-            <ul class="d5-tool-list">
-              <li>Color Picker</li>
-              <li>Contrast Checker</li>
-              <li>Box Shadow Gen</li>
-              <li>Grid Generator</li>
-            </ul>
-          </div>
-
-          <div class="d5-cell">
-            <div class="icon">&#128736;</div>
-            <h3>Utilities</h3>
-            <ul class="d5-tool-list">
-              <li>JSON Formatter</li>
-              <li>JWT Decoder</li>
-              <li>UUID Generator</li>
-              <li>Regex Tester</li>
-            </ul>
-          </div>
-
-          <!-- SSoC -->
-          <div class="d5-cell span-4" style="text-align: center;">
-            <div class="icon">&#127891;</div>
-            <h3>SSoC (Social Summer of Code)</h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 600px; margin: 0 auto;">
-              This project is part of Social Summer of Code. Pick an Easy or Medium issue, build a tool, and earn contribution points.
-              <a href="https://portal.socialsummerofcode.com/">Learn more</a>.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <footer class="site-footer">
-        Built by <a href="https://praveen.science">Praveen Kumar Purushothaman</a> &middot;
-        <a href="https://github.com/praveenscience/One-File-Tools">GitHub</a> &middot;
-        <a href="https://portal.socialsummerofcode.com/">SSoC</a>
-      </footer>
-    </section>
-
-    <!-- ========================================
-         JavaScript
-         ======================================== -->
     <script>
-      // Design switcher
-      function switchDesign(id, btn) {
-        document.querySelectorAll(".design-section").forEach((s) => s.classList.remove("active"));
-        document.getElementById(id).classList.add("active");
-        document.querySelectorAll(".design-switcher .buttons button").forEach((b) => b.classList.remove("active"));
-        btn.classList.add("active");
-      }
+      // ── Tool Data ──
+      var TOOLS = [{"id":"og-generator","name":"Open Graph Generator","shortDescription":"Generate Open Graph meta tags and preview how your links appear on social media.","longDescriptionHtml":"<h2>Open Graph Generator</h2>\n<p>Create perfectly formatted Open Graph meta tags for your website. Preview how your links will appear when shared on Facebook, Twitter, LinkedIn, and other social platforms.</p>\n<h3>Features</h3>\n<ul>\n<li>Live preview of social cards</li>\n<li>Generate <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and more</li>\n<li>Copy-paste ready meta tag output</li>\n<li>Twitter Card support</li>\n<li>LinkedIn preview</li>\n</ul>\n","category":"web-seo","categoryName":"Web & SEO","categoryIcon":"🌐","tags":["open-graph","meta-tags","seo","social-media","preview"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/og-generator.html","thumbnail":"tools/og-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/og-generator.html","live":"https://one-file-tools.pages.dev/tools/og-generator.html"},{"id":"og-checker","name":"Open Graph Checker","shortDescription":"Validate and preview existing Open Graph tags from any URL.","longDescriptionHtml":"<h2>Open Graph Checker</h2>\n<p>Paste any URL and instantly see its Open Graph metadata. Validates required tags, shows warnings for missing properties, and previews how the link appears on social platforms.</p>\n<h3>Features</h3>\n<ul>\n<li>Fetch and parse OG tags from any URL</li>\n<li>Validation against OG protocol spec</li>\n<li>Visual preview cards</li>\n<li>Warning for missing recommended tags</li>\n</ul>\n","category":"web-seo","categoryName":"Web & SEO","categoryIcon":"🌐","tags":["open-graph","validator","seo","meta-tags"],"techStack":["HTML5","CSS3","Vanilla JS","Fetch API"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/og-checker.html","thumbnail":"tools/og-checker.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/og-checker.html","live":"https://one-file-tools.pages.dev/tools/og-checker.html"},{"id":"meta-tag-generator","name":"Meta Tag Generator","shortDescription":"Create standard HTML meta tags for SEO, social sharing, and browser behavior.","longDescriptionHtml":"<h2>Meta Tag Generator</h2>\n<p>A comprehensive meta tag builder that generates all the essential HTML meta tags your page needs. Covers SEO, social sharing, viewport, charset, and more.</p>\n<h3>Features</h3>\n<ul>\n<li>SEO meta tags (title, description, keywords, robots)</li>\n<li>Social meta tags (OG, Twitter Card)</li>\n<li>Technical meta tags (charset, viewport, theme-color)</li>\n<li>Copy all tags with one click</li>\n</ul>\n","category":"web-seo","categoryName":"Web & SEO","categoryIcon":"🌐","tags":["meta-tags","seo","html","generator"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/meta-tag-generator.html","thumbnail":"tools/meta-tag-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/meta-tag-generator.html","live":"https://one-file-tools.pages.dev/tools/meta-tag-generator.html"},{"id":"twitter-card-preview","name":"Twitter / X Card Preview","shortDescription":"Preview how your links will appear when shared on Twitter / X.","longDescriptionHtml":"<h2>Twitter / X Card Preview</h2>\n<p>See exactly how your links will look when shared on Twitter / X. Supports Summary, Summary Large Image, App, and Player card types.</p>\n<h3>Features</h3>\n<ul>\n<li>All Twitter Card types supported</li>\n<li>Live preview as you type</li>\n<li>Validation of required fields</li>\n<li>Generate twitter:card meta tags</li>\n</ul>\n","category":"web-seo","categoryName":"Web & SEO","categoryIcon":"🌐","tags":["twitter","card","preview","social-media"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/twitter-card-preview.html","thumbnail":"tools/twitter-card-preview.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/twitter-card-preview.html","live":"https://one-file-tools.pages.dev/tools/twitter-card-preview.html"},{"id":"robots-txt-generator","name":"Robots.txt Generator","shortDescription":"Build a robots.txt file visually with user-agent rules and sitemaps.","longDescriptionHtml":"<h2>Robots.txt Generator</h2>\n<p>Create robots.txt files without memorizing the syntax. Add user-agent rules, allow/disallow paths, and sitemap references through a visual interface.</p>\n<h3>Features</h3>\n<ul>\n<li>Add multiple user-agent blocks</li>\n<li>Allow and disallow paths</li>\n<li>Sitemap URL support</li>\n<li>Crawl-delay setting</li>\n<li>Download or copy the generated file</li>\n</ul>\n","category":"web-seo","categoryName":"Web & SEO","categoryIcon":"🌐","tags":["robots","seo","crawler","generator"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/robots-txt-generator.html","thumbnail":"tools/robots-txt-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/robots-txt-generator.html","live":"https://one-file-tools.pages.dev/tools/robots-txt-generator.html"},{"id":"json-formatter","name":"JSON Formatter","shortDescription":"Format, validate, and minify JSON with syntax highlighting and error detection.","longDescriptionHtml":"<h2>JSON Formatter</h2>\n<p>Paste messy JSON and get it beautifully formatted instantly. Validates JSON structure, highlights syntax errors with line numbers, and can minify for production use.</p>\n<h3>Features</h3>\n<ul>\n<li>Format / prettify JSON with configurable indentation</li>\n<li>Minify JSON (remove whitespace)</li>\n<li>Syntax highlighting</li>\n<li>Error detection with line and column numbers</li>\n<li>Copy formatted output</li>\n<li>Download as .json file</li>\n</ul>\n","category":"json-api","categoryName":"JSON & API","categoryIcon":"🔗","tags":["json","formatter","validator","minify","prettify"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/json-formatter.html","thumbnail":"tools/json-formatter.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/json-formatter.html","live":"https://one-file-tools.pages.dev/tools/json-formatter.html"},{"id":"jwt-decoder","name":"JWT Decoder","shortDescription":"Decode and inspect JSON Web Token header, payload, and signature.","longDescriptionHtml":"<h2>JWT Decoder</h2>\n<p>Paste a JWT and instantly see its decoded header, payload, and signature. Highlights expiration, issued-at, and other standard claims.</p>\n<h3>Features</h3>\n<ul>\n<li>Decode header and payload</li>\n<li>Highlight standard claims (exp, iat, sub, iss)</li>\n<li>Expiration check (expired / valid / no expiry)</li>\n<li>Color-coded token parts</li>\n<li>Copy decoded sections</li>\n</ul>\n","category":"json-api","categoryName":"JSON & API","categoryIcon":"🔗","tags":["jwt","decoder","token","authentication"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/jwt-decoder.html","thumbnail":"tools/jwt-decoder.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/jwt-decoder.html","live":"https://one-file-tools.pages.dev/tools/jwt-decoder.html"},{"id":"url-encoder-decoder","name":"URL Encoder / Decoder","shortDescription":"Encode and decode URL strings, query parameters, and URI components.","longDescriptionHtml":"<h2>URL Encoder / Decoder</h2>\n<p>Quickly encode or decode URLs and URI components. Handles special characters, query strings, and full URLs.</p>\n<h3>Features</h3>\n<ul>\n<li>Encode / decode full URLs</li>\n<li>Encode / decode URI components</li>\n<li>Handle special characters</li>\n<li>Batch mode for multiple values</li>\n<li>Copy result to clipboard</li>\n</ul>\n","category":"json-api","categoryName":"JSON & API","categoryIcon":"🔗","tags":["url","encoder","decoder","uri"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/url-encoder-decoder.html","thumbnail":"tools/url-encoder-decoder.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/url-encoder-decoder.html","live":"https://one-file-tools.pages.dev/tools/url-encoder-decoder.html"},{"id":"base64-encoder-decoder","name":"Base64 Encoder / Decoder","shortDescription":"Encode and decode Base64 strings for text, data URIs, and binary data.","longDescriptionHtml":"<h2>Base64 Encoder / Decoder</h2>\n<p>Convert text to Base64 and back. Supports UTF-8 text, binary data, and data URI generation for images.</p>\n<h3>Features</h3>\n<ul>\n<li>Text to Base64 encoding</li>\n<li>Base64 to text decoding</li>\n<li>File to Base64 conversion</li>\n<li>Data URI generation</li>\n<li>UTF-8 support</li>\n</ul>\n","category":"json-api","categoryName":"JSON & API","categoryIcon":"🔗","tags":["base64","encoder","decoder","data-uri"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/base64-encoder-decoder.html","thumbnail":"tools/base64-encoder-decoder.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/base64-encoder-decoder.html","live":"https://one-file-tools.pages.dev/tools/base64-encoder-decoder.html"},{"id":"color-picker","name":"Color Picker","shortDescription":"Pick colors and get output in HEX, RGB, HSL, and OKLCH formats.","longDescriptionHtml":"<h2>Color Picker</h2>\n<p>A visual color picker that outputs colors in every format you need. Pick from the color wheel or enter values directly.</p>\n<h3>Features</h3>\n<ul>\n<li>Visual color wheel / area picker</li>\n<li>HEX, RGB, HSL, OKLCH output</li>\n<li>Copy any format to clipboard</li>\n<li>Color history (recent picks)</li>\n<li>Named CSS colors reference</li>\n</ul>\n","category":"color","categoryName":"Color Tools","categoryIcon":"🌈","tags":["color","picker","hex","rgb","hsl"],"techStack":["HTML5","CSS3","Canvas API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/color-picker.html","thumbnail":"tools/color-picker.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/color-picker.html","live":"https://one-file-tools.pages.dev/tools/color-picker.html"},{"id":"contrast-checker","name":"Contrast Checker","shortDescription":"Check WCAG 2.1 AA and AAA contrast ratio compliance between two colors.","longDescriptionHtml":"<h2>Contrast Checker</h2>\n<p>Verify that your text and background color combinations meet WCAG 2.1 accessibility standards. Shows pass/fail for both AA and AAA levels.</p>\n<h3>Features</h3>\n<ul>\n<li>WCAG 2.1 contrast ratio calculation</li>\n<li>AA and AAA pass/fail indicators</li>\n<li>Large text and normal text checks</li>\n<li>Visual preview of the color combination</li>\n<li>Suggest closest accessible color</li>\n</ul>\n","category":"accessibility","categoryName":"Accessibility","categoryIcon":"♿","tags":["contrast","wcag","accessibility","a11y","color"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/contrast-checker.html","thumbnail":"tools/contrast-checker.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/contrast-checker.html","live":"https://one-file-tools.pages.dev/tools/contrast-checker.html"},{"id":"gradient-builder","name":"Gradient Builder","shortDescription":"Create CSS linear and radial gradients visually with live preview.","longDescriptionHtml":"<h2>Gradient Builder</h2>\n<p>Design beautiful CSS gradients with a visual editor. Supports linear and radial gradients with multiple color stops.</p>\n<h3>Features</h3>\n<ul>\n<li>Linear and radial gradient support</li>\n<li>Multiple color stops with drag positioning</li>\n<li>Angle / direction control</li>\n<li>Live CSS output</li>\n<li>Copy CSS to clipboard</li>\n<li>Preset gradients library</li>\n</ul>\n","category":"color","categoryName":"Color Tools","categoryIcon":"🌈","tags":["gradient","css","color","generator"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/gradient-builder.html","thumbnail":"tools/gradient-builder.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/gradient-builder.html","live":"https://one-file-tools.pages.dev/tools/gradient-builder.html"},{"id":"box-shadow-generator","name":"Box Shadow Generator","shortDescription":"Design CSS box shadows with live preview, multiple layers, and code export.","longDescriptionHtml":"<h2>Box Shadow Generator</h2>\n<p>Create beautiful CSS box shadows with a visual editor. Add multiple shadow layers, adjust offsets, blur, spread, and color.</p>\n<h3>Features</h3>\n<ul>\n<li>Multiple shadow layers</li>\n<li>Horizontal and vertical offset sliders</li>\n<li>Blur radius and spread control</li>\n<li>Color picker with opacity</li>\n<li>Inset shadow toggle</li>\n<li>Live preview and CSS output</li>\n</ul>\n","category":"css","categoryName":"CSS Tools","categoryIcon":"🎨","tags":["box-shadow","css","generator","design"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/box-shadow-generator.html","thumbnail":"tools/box-shadow-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/box-shadow-generator.html","live":"https://one-file-tools.pages.dev/tools/box-shadow-generator.html"},{"id":"css-grid-generator","name":"CSS Grid Generator","shortDescription":"Build CSS Grid layouts visually with interactive rows, columns, and areas.","longDescriptionHtml":"<h2>CSS Grid Generator</h2>\n<p>Design CSS Grid layouts by clicking and dragging. Define rows, columns, gaps, and named areas, then export clean CSS.</p>\n<h3>Features</h3>\n<ul>\n<li>Visual grid builder</li>\n<li>Add/remove rows and columns</li>\n<li>Drag to create grid areas</li>\n<li>Gap and alignment controls</li>\n<li>Responsive preview</li>\n<li>Export HTML and CSS</li>\n</ul>\n","category":"css","categoryName":"CSS Tools","categoryIcon":"🎨","tags":["css-grid","layout","generator","design"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/css-grid-generator.html","thumbnail":"tools/css-grid-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/css-grid-generator.html","live":"https://one-file-tools.pages.dev/tools/css-grid-generator.html"},{"id":"flexbox-playground","name":"Flexbox Playground","shortDescription":"Experiment with Flexbox properties and see the effects in real time.","longDescriptionHtml":"<h2>Flexbox Playground</h2>\n<p>Learn and experiment with every CSS Flexbox property. Toggle container and item properties and see instant visual feedback.</p>\n<h3>Features</h3>\n<ul>\n<li>All flex container properties</li>\n<li>All flex item properties</li>\n<li>Add/remove flex items</li>\n<li>Visual highlighting of alignment</li>\n<li>Export CSS</li>\n</ul>\n","category":"css","categoryName":"CSS Tools","categoryIcon":"🎨","tags":["flexbox","css","layout","playground"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/flexbox-playground.html","thumbnail":"tools/flexbox-playground.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/flexbox-playground.html","live":"https://one-file-tools.pages.dev/tools/flexbox-playground.html"},{"id":"image-dimension-checker","name":"Image Dimension Checker","shortDescription":"Drop or upload an image to instantly see its width, height, and aspect ratio.","longDescriptionHtml":"<h2>Image Dimension Checker</h2>\n<p>Drag and drop any image to instantly view its dimensions, aspect ratio, file size, and format. Works entirely in the browser.</p>\n<h3>Features</h3>\n<ul>\n<li>Drag and drop or file upload</li>\n<li>Width, height, and aspect ratio display</li>\n<li>File size and format detection</li>\n<li>Multiple image support</li>\n<li>No images are uploaded anywhere</li>\n</ul>\n","category":"image","categoryName":"Image Tools","categoryIcon":"🖼️","tags":["image","dimensions","aspect-ratio","size"],"techStack":["HTML5","CSS3","File API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/image-dimension-checker.html","thumbnail":"tools/image-dimension-checker.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/image-dimension-checker.html","live":"https://one-file-tools.pages.dev/tools/image-dimension-checker.html"},{"id":"svg-previewer","name":"SVG Previewer","shortDescription":"Paste SVG code and preview it instantly with zoom and background options.","longDescriptionHtml":"<h2>SVG Previewer</h2>\n<p>Paste SVG markup and see it rendered immediately. Toggle backgrounds, zoom in/out, and inspect SVG dimensions.</p>\n<h3>Features</h3>\n<ul>\n<li>Live SVG rendering from code</li>\n<li>Dark/light/checkerboard background toggle</li>\n<li>Zoom controls</li>\n<li>SVG dimension display</li>\n<li>Download as PNG option</li>\n</ul>\n","category":"image","categoryName":"Image Tools","categoryIcon":"🖼️","tags":["svg","preview","viewer","vector"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/svg-previewer.html","thumbnail":"tools/svg-previewer.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/svg-previewer.html","live":"https://one-file-tools.pages.dev/tools/svg-previewer.html"},{"id":"lorem-ipsum-generator","name":"Lorem Ipsum Generator","shortDescription":"Generate placeholder text in paragraphs, sentences, or words.","longDescriptionHtml":"<h2>Lorem Ipsum Generator</h2>\n<p>Generate placeholder text for your designs and layouts. Choose the number of paragraphs, sentences, or words.</p>\n<h3>Features</h3>\n<ul>\n<li>Generate by paragraphs, sentences, or words</li>\n<li>Configurable count</li>\n<li>Start with &quot;Lorem ipsum dolor sit amet...&quot;</li>\n<li>Copy to clipboard</li>\n<li>Plain text and HTML output</li>\n</ul>\n","category":"text","categoryName":"Text & Content","categoryIcon":"📝","tags":["lorem-ipsum","placeholder","text","generator"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/lorem-ipsum-generator.html","thumbnail":"tools/lorem-ipsum-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/lorem-ipsum-generator.html","live":"https://one-file-tools.pages.dev/tools/lorem-ipsum-generator.html"},{"id":"word-character-counter","name":"Word / Character Counter","shortDescription":"Count words, characters, sentences, and paragraphs with reading time.","longDescriptionHtml":"<h2>Word / Character Counter</h2>\n<p>Paste or type text and get instant statistics. Word count, character count (with/without spaces), sentence count, paragraph count, and estimated reading time.</p>\n<h3>Features</h3>\n<ul>\n<li>Word count</li>\n<li>Character count (with and without spaces)</li>\n<li>Sentence and paragraph count</li>\n<li>Estimated reading time</li>\n<li>Live update as you type</li>\n</ul>\n","category":"text","categoryName":"Text & Content","categoryIcon":"📝","tags":["word-count","character-count","text","statistics"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/word-character-counter.html","thumbnail":"tools/word-character-counter.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/word-character-counter.html","live":"https://one-file-tools.pages.dev/tools/word-character-counter.html"},{"id":"case-converter","name":"Case Converter","shortDescription":"Transform text between camelCase, snake_case, UPPER, lower, Title, and more.","longDescriptionHtml":"<h2>Case Converter</h2>\n<p>Convert text between every common casing style. Useful for developers switching between naming conventions.</p>\n<h3>Features</h3>\n<ul>\n<li>camelCase</li>\n<li>PascalCase</li>\n<li>snake_case</li>\n<li>kebab-case</li>\n<li>UPPER CASE</li>\n<li>lower case</li>\n<li>Title Case</li>\n<li>Sentence case</li>\n<li>CONSTANT_CASE</li>\n<li>dot.case</li>\n</ul>\n","category":"text","categoryName":"Text & Content","categoryIcon":"📝","tags":["case","converter","text","camelCase","snake_case"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/case-converter.html","thumbnail":"tools/case-converter.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/case-converter.html","live":"https://one-file-tools.pages.dev/tools/case-converter.html"},{"id":"regex-tester","name":"Regex Tester","shortDescription":"Test regular expressions with live matching, group highlighting, and flags.","longDescriptionHtml":"<h2>Regex Tester</h2>\n<p>Write and test regular expressions with instant visual feedback. See matches highlighted in your test string, with capture groups color-coded.</p>\n<h3>Features</h3>\n<ul>\n<li>Live regex matching</li>\n<li>Capture group highlighting</li>\n<li>All regex flags (g, i, m, s, u, y)</li>\n<li>Match count and details</li>\n<li>Common regex patterns library</li>\n<li>Replace mode</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["regex","tester","regular-expression","pattern"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/regex-tester.html","thumbnail":"tools/regex-tester.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/regex-tester.html","live":"https://one-file-tools.pages.dev/tools/regex-tester.html"},{"id":"uuid-generator","name":"UUID Generator","shortDescription":"Generate random v4 UUIDs instantly with bulk generation support.","longDescriptionHtml":"<h2>UUID Generator</h2>\n<p>Generate RFC 4122 compliant v4 UUIDs. Create single or bulk UUIDs with one click.</p>\n<h3>Features</h3>\n<ul>\n<li>Generate single UUID</li>\n<li>Bulk generation (up to 100)</li>\n<li>Uppercase / lowercase toggle</li>\n<li>With or without hyphens</li>\n<li>Copy to clipboard</li>\n<li>History of generated UUIDs</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["uuid","generator","random","identifier"],"techStack":["HTML5","CSS3","Crypto API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/uuid-generator.html","thumbnail":"tools/uuid-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/uuid-generator.html","live":"https://one-file-tools.pages.dev/tools/uuid-generator.html"},{"id":"timestamp-converter","name":"Timestamp Converter","shortDescription":"Convert Unix timestamps to human-readable dates and vice versa.","longDescriptionHtml":"<h2>Timestamp Converter</h2>\n<p>Convert between Unix timestamps (seconds and milliseconds) and human-readable date formats. Shows local time, UTC, and ISO 8601.</p>\n<h3>Features</h3>\n<ul>\n<li>Unix timestamp to date</li>\n<li>Date to Unix timestamp</li>\n<li>Seconds and milliseconds support</li>\n<li>Local time and UTC display</li>\n<li>ISO 8601 output</li>\n<li>Current timestamp display</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["timestamp","unix","date","converter","epoch"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/timestamp-converter.html","thumbnail":"tools/timestamp-converter.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/timestamp-converter.html","live":"https://one-file-tools.pages.dev/tools/timestamp-converter.html"},{"id":"hash-generator","name":"Hash Generator","shortDescription":"Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text input.","longDescriptionHtml":"<h2>Hash Generator</h2>\n<p>Generate cryptographic hashes from text input using the Web Crypto API. Supports multiple hash algorithms.</p>\n<h3>Features</h3>\n<ul>\n<li>MD5 (via JS implementation)</li>\n<li>SHA-1</li>\n<li>SHA-256</li>\n<li>SHA-512</li>\n<li>Live hashing as you type</li>\n<li>Copy any hash to clipboard</li>\n<li>File hashing support</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["hash","md5","sha","cryptography","generator"],"techStack":["HTML5","CSS3","Web Crypto API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/hash-generator.html","thumbnail":"tools/hash-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/hash-generator.html","live":"https://one-file-tools.pages.dev/tools/hash-generator.html"},{"id":"password-generator","name":"Password Generator","shortDescription":"Generate strong random passwords with customizable length and characters.","longDescriptionHtml":"<h2>Password Generator</h2>\n<p>Generate cryptographically strong random passwords. Customize length, character sets, and exclusions.</p>\n<h3>Features</h3>\n<ul>\n<li>Configurable length</li>\n<li>Include/exclude: uppercase, lowercase, numbers, symbols</li>\n<li>Exclude ambiguous characters (0, O, l, 1)</li>\n<li>Password strength indicator</li>\n<li>Generate multiple passwords</li>\n<li>Copy to clipboard</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["password","generator","security","random"],"techStack":["HTML5","CSS3","Crypto API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/password-generator.html","thumbnail":"tools/password-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/password-generator.html","live":"https://one-file-tools.pages.dev/tools/password-generator.html"},{"id":"qr-code-generator","name":"QR Code Generator","shortDescription":"Create QR codes from text, URLs, or data with download options.","longDescriptionHtml":"<h2>QR Code Generator</h2>\n<p>Generate QR codes from any text or URL. Customize size and download as PNG or SVG.</p>\n<h3>Features</h3>\n<ul>\n<li>Text and URL input</li>\n<li>Configurable size</li>\n<li>Error correction levels</li>\n<li>Download as PNG</li>\n<li>Download as SVG</li>\n<li>Color customization</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["qr-code","generator","barcode"],"techStack":["HTML5","CSS3","Canvas API"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/qr-code-generator.html","thumbnail":"tools/qr-code-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/qr-code-generator.html","live":"https://one-file-tools.pages.dev/tools/qr-code-generator.html"},{"id":"markdown-previewer","name":"Markdown Previewer","shortDescription":"Write Markdown on the left, see rendered HTML on the right in real time.","longDescriptionHtml":"<h2>Markdown Previewer</h2>\n<p>A split-pane Markdown editor with live preview. Write Markdown on the left and see it rendered as HTML instantly on the right.</p>\n<h3>Features</h3>\n<ul>\n<li>Live preview as you type</li>\n<li>GitHub Flavored Markdown support</li>\n<li>Syntax highlighting for code blocks</li>\n<li>Full-screen editing mode</li>\n<li>Export as HTML</li>\n<li>Print-friendly output</li>\n</ul>\n","category":"text","categoryName":"Text & Content","categoryIcon":"📝","tags":["markdown","preview","editor","html"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/markdown-previewer.html","thumbnail":"tools/markdown-previewer.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/markdown-previewer.html","live":"https://one-file-tools.pages.dev/tools/markdown-previewer.html"},{"id":"slug-generator","name":"Slug Generator","shortDescription":"Convert text to URL-friendly slugs with customizable separators.","longDescriptionHtml":"<h2>Slug Generator</h2>\n<p>Convert any text into a clean, URL-friendly slug. Handles special characters, accents, and Unicode.</p>\n<h3>Features</h3>\n<ul>\n<li>Automatic slug generation</li>\n<li>Customizable separator (hyphen, underscore)</li>\n<li>Unicode and accent handling</li>\n<li>Maximum length setting</li>\n<li>Live preview</li>\n<li>Copy to clipboard</li>\n</ul>\n","category":"text","categoryName":"Text & Content","categoryIcon":"📝","tags":["slug","url","generator","text"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/slug-generator.html","thumbnail":"tools/slug-generator.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/slug-generator.html","live":"https://one-file-tools.pages.dev/tools/slug-generator.html"},{"id":"cron-expression-builder","name":"Cron Expression Builder","shortDescription":"Build and understand cron schedule expressions with a visual interface.","longDescriptionHtml":"<h2>Cron Expression Builder</h2>\n<p>Build cron expressions visually instead of memorizing the syntax. See a human-readable description of when your cron job will run.</p>\n<h3>Features</h3>\n<ul>\n<li>Visual cron builder (minute, hour, day, month, weekday)</li>\n<li>Human-readable schedule description</li>\n<li>Next 5 execution times</li>\n<li>Preset common schedules</li>\n<li>Copy expression to clipboard</li>\n</ul>\n","category":"utilities","categoryName":"Developer Utilities","categoryIcon":"🛠️","tags":["cron","scheduler","expression","builder"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Medium","status":"idea","hasThumbnail":false,"file":"tools/cron-expression-builder.html","thumbnail":"tools/cron-expression-builder.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/cron-expression-builder.html","live":"https://one-file-tools.pages.dev/tools/cron-expression-builder.html"},{"id":"user-agent-parser","name":"User Agent Parser","shortDescription":"Parse and explain browser user agent strings into readable components.","longDescriptionHtml":"<h2>User Agent Parser</h2>\n<p>Paste any user agent string and see it broken down into browser, engine, OS, and device information. Also shows your current user agent.</p>\n<h3>Features</h3>\n<ul>\n<li>Parse any user agent string</li>\n<li>Detect browser name and version</li>\n<li>Detect OS and platform</li>\n<li>Device type detection</li>\n<li>Show current browser&#39;s user agent</li>\n<li>Common user agents reference</li>\n</ul>\n","category":"browser-network","categoryName":"Browser & Network","categoryIcon":"🌐","tags":["user-agent","parser","browser","detection"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/user-agent-parser.html","thumbnail":"tools/user-agent-parser.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/user-agent-parser.html","live":"https://one-file-tools.pages.dev/tools/user-agent-parser.html"},{"id":"viewport-screen-info","name":"Viewport / Screen Info","shortDescription":"Display current device viewport, screen dimensions, and pixel ratio.","longDescriptionHtml":"<h2>Viewport / Screen Info</h2>\n<p>Instantly see your current viewport width, screen resolution, device pixel ratio, and more. Updates live as you resize.</p>\n<h3>Features</h3>\n<ul>\n<li>Viewport width and height (live)</li>\n<li>Screen width and height</li>\n<li>Device pixel ratio</li>\n<li>Color depth</li>\n<li>Orientation</li>\n<li>Touch support detection</li>\n<li>CSS media query matches</li>\n</ul>\n","category":"browser-network","categoryName":"Browser & Network","categoryIcon":"🌐","tags":["viewport","screen","resolution","responsive"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/viewport-screen-info.html","thumbnail":"tools/viewport-screen-info.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/viewport-screen-info.html","live":"https://one-file-tools.pages.dev/tools/viewport-screen-info.html"},{"id":"heading-structure-visualizer","name":"Heading Structure Visualizer","shortDescription":"Paste HTML or a URL to visualize the heading hierarchy and spot issues.","longDescriptionHtml":"<h2>Heading Structure Visualizer</h2>\n<p>Visualize the heading structure (h1-h6) of any HTML page. Highlights skipped levels and accessibility issues.</p>\n<h3>Features</h3>\n<ul>\n<li>Paste HTML to analyze</li>\n<li>Tree view of heading hierarchy</li>\n<li>Highlight skipped heading levels</li>\n<li>Accessibility warnings</li>\n<li>Outline view matching screen reader behavior</li>\n</ul>\n","category":"accessibility","categoryName":"Accessibility","categoryIcon":"♿","tags":["headings","structure","accessibility","a11y","html"],"techStack":["HTML5","CSS3","Vanilla JS"],"difficulty":"Easy","status":"idea","hasThumbnail":false,"file":"tools/heading-structure-visualizer.html","thumbnail":"tools/heading-structure-visualizer.png","github":"https://github.com/praveenscience/One-File-Tools/blob/main/tools/heading-structure-visualizer.html","live":"https://one-file-tools.pages.dev/tools/heading-structure-visualizer.html"}];
 
-      // Theme toggle
+      // ── Theme ──
       function toggleTheme() {
-        const html = document.documentElement;
-        const isDark = html.getAttribute("data-theme") === "dark";
+        var html = document.documentElement;
+        var isDark = html.getAttribute("data-theme") === "dark";
         html.setAttribute("data-theme", isDark ? "light" : "dark");
-        document.getElementById("theme-icon").innerHTML = isDark ? "&#9790;" : "&#9728;";
+        document.getElementById("theme-icon").innerHTML = isDark ? "\u263E" : "\u2600";
+        localStorage.setItem("theme", isDark ? "light" : "dark");
       }
 
-      // Check system preference on load
-      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        document.documentElement.setAttribute("data-theme", "dark");
-        document.getElementById("theme-icon").innerHTML = "&#9728;";
+      (function initTheme() {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+          document.documentElement.setAttribute("data-theme", "dark");
+          document.getElementById("theme-icon").innerHTML = "\u2600";
+        }
+      })();
+
+      // ── Search & Filter ──
+      var searchInput = document.getElementById("search-input");
+      var grid = document.getElementById("tool-grid");
+      var cards = Array.from(grid.querySelectorAll(".tool-card"));
+      var filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+      var noResults = document.getElementById("no-results");
+      var resultsCount = document.getElementById("results-count");
+      var activeCategory = "all";
+
+      function filterAndSearch() {
+        var query = searchInput.value.toLowerCase().trim();
+        var visible = 0;
+
+        cards.forEach(function(card) {
+          var matchCategory = activeCategory === "all" || card.dataset.category === activeCategory;
+          var matchSearch = !query || card.dataset.search.indexOf(query) !== -1;
+          var show = matchCategory && matchSearch;
+          card.style.display = show ? "" : "none";
+          if (show) visible++;
+        });
+
+        noResults.style.display = visible === 0 ? "block" : "none";
+        resultsCount.textContent = query || activeCategory !== "all"
+          ? visible + " tool" + (visible !== 1 ? "s" : "") + " found"
+          : "";
       }
 
-      // Design 3: Live JSON formatter demo
-      function formatJSON() {
-        const input = document.getElementById("d3-json-input").value;
-        const output = document.getElementById("d3-json-output");
-        if (!input.trim()) {
-          output.textContent = "Paste some JSON above and click Format.";
-          return;
+      searchInput.addEventListener("input", filterAndSearch);
+
+      filterButtons.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+          filterButtons.forEach(function(b) { b.classList.remove("active"); });
+          btn.classList.add("active");
+          activeCategory = btn.dataset.category;
+          filterAndSearch();
+        });
+      });
+
+      // ── Modal ──
+      var overlay = document.getElementById("modal-overlay");
+      var modalContent = document.getElementById("modal-content");
+
+      function openModal(toolId) {
+        var tool = TOOLS.find(function(t) { return t.id === toolId; });
+        if (!tool) return;
+
+        var thumbHtml = tool.hasThumbnail
+          ? '<img class="modal-thumb" src="' + tool.thumbnail + '" alt="' + tool.name + '" onerror="this.outerHTML=\'<div class=modal-thumb-placeholder>' + tool.categoryIcon + '</div>\'" />'
+          : '<div class="modal-thumb-placeholder">' + tool.categoryIcon + '</div>';
+
+        var linksHtml = '';
+        if (tool.status === "live") {
+          linksHtml += '<a href="' + tool.live + '" class="btn btn-primary" target="_blank">Open Tool</a>';
         }
-        try {
-          const parsed = JSON.parse(input);
-          output.textContent = JSON.stringify(parsed, null, 2);
-        } catch (e) {
-          output.textContent = "Error: " + e.message;
-        }
+        linksHtml += '<a href="' + tool.github + '" class="btn btn-outline" target="_blank">View Source</a>';
+
+        var techHtml = tool.techStack.map(function(t) {
+          return '<span class="tech-badge">' + t + '</span>';
+        }).join("");
+
+        var tagsHtml = tool.tags.map(function(t) {
+          return '<span class="modal-tag">' + t + '</span>';
+        }).join("");
+
+        modalContent.innerHTML = thumbHtml
+          + '<div class="modal-header">'
+          + '  <h2>' + tool.name + '</h2>'
+          + '  <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>'
+          + '</div>'
+          + '<div class="modal-meta">'
+          + '  <span class="tag tag-category">' + tool.categoryName + '</span>'
+          + '  <span class="tag tag-' + tool.difficulty.toLowerCase() + '">' + tool.difficulty + '</span>'
+          + '  <span class="tag tag-' + tool.status + '">' + (tool.status === "live" ? "Live" : tool.status === "in-progress" ? "In Progress" : "Idea") + '</span>'
+          + '</div>'
+          + '<div class="modal-links">' + linksHtml + '</div>'
+          + '<div class="modal-body">' + tool.longDescriptionHtml + '</div>'
+          + '<div class="modal-section">'
+          + '  <div class="modal-section-title">Tech Stack</div>'
+          + '  <div class="tech-stack">' + techHtml + '</div>'
+          + '</div>'
+          + '<div class="modal-section">'
+          + '  <div class="modal-section-title">Tags</div>'
+          + '  <div class="modal-tags">' + tagsHtml + '</div>'
+          + '</div>';
+
+        overlay.classList.add("open");
+        document.body.style.overflow = "hidden";
       }
+
+      function closeModal() {
+        overlay.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      // Click card to open modal
+      cards.forEach(function(card) {
+        card.addEventListener("click", function() {
+          openModal(card.dataset.id);
+        });
+      });
+
+      // Close on overlay click
+      overlay.addEventListener("click", function(e) {
+        if (e.target === overlay) closeModal();
+      });
+
+      // Close on Escape
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closeModal();
+      });
     </script>
   </body>
 </html>

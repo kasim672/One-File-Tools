@@ -1,0 +1,384 @@
+{
+  "site": {
+    "title": "One File Tools",
+    "tagline": "Developer tools, one file each.",
+    "description": "A collection of useful developer tools, each built as a single, self-contained HTML file. No build step. No dependencies. No frameworks.",
+    "url": "https://one-file-tools.pages.dev",
+    "github": "https://github.com/praveenscience/One-File-Tools",
+    "author": {
+      "name": "Praveen Kumar Purushothaman",
+      "url": "https://praveen.science",
+      "github": "praveenscience"
+    },
+    "ssoc": {
+      "name": "Social Summer of Code",
+      "url": "https://portal.socialsummerofcode.com/",
+      "leaderboard": "https://portal.socialsummerofcode.com/leaderboard"
+    }
+  },
+  "categories": [
+    { "id": "web-seo", "name": "Web & SEO", "icon": "\uD83C\uDF10", "description": "Meta tags, OG previews, sitemaps, and SEO utilities" },
+    { "id": "image", "name": "Image Tools", "icon": "\uD83D\uDDBC\uFE0F", "description": "Dimensions, converters, SVG, favicons, and metadata" },
+    { "id": "color", "name": "Color Tools", "icon": "\uD83C\uDF08", "description": "Pickers, contrast checkers, palettes, and converters" },
+    { "id": "css", "name": "CSS Tools", "icon": "\uD83C\uDFA8", "description": "Shadows, grids, flexbox, gradients, and generators" },
+    { "id": "text", "name": "Text & Content", "icon": "\uD83D\uDCDD", "description": "Counters, converters, diffs, and Markdown preview" },
+    { "id": "json-api", "name": "JSON & API", "icon": "\uD83D\uDD17", "description": "Formatters, JWT decoders, URL encoders, and curl builders" },
+    { "id": "utilities", "name": "Developer Utilities", "icon": "\uD83D\uDEE0\uFE0F", "description": "UUIDs, hashes, regex, cron, passwords, and QR codes" },
+    { "id": "browser-network", "name": "Browser & Network", "icon": "\uD83C\uDF10", "description": "User agents, viewport info, cookies, and headers" },
+    { "id": "accessibility", "name": "Accessibility", "icon": "\u267F", "description": "Contrast checkers, heading structure, ARIA references" }
+  ],
+  "tools": [
+    {
+      "id": "og-generator",
+      "name": "Open Graph Generator",
+      "shortDescription": "Generate Open Graph meta tags and preview how your links appear on social media.",
+      "longDescription": "## Open Graph Generator\n\nCreate perfectly formatted Open Graph meta tags for your website. Preview how your links will appear when shared on Facebook, Twitter, LinkedIn, and other social platforms.\n\n### Features\n\n- Live preview of social cards\n- Generate `og:title`, `og:description`, `og:image`, and more\n- Copy-paste ready meta tag output\n- Twitter Card support\n- LinkedIn preview",
+      "category": "web-seo",
+      "tags": ["open-graph", "meta-tags", "seo", "social-media", "preview"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "og-checker",
+      "name": "Open Graph Checker",
+      "shortDescription": "Validate and preview existing Open Graph tags from any URL.",
+      "longDescription": "## Open Graph Checker\n\nPaste any URL and instantly see its Open Graph metadata. Validates required tags, shows warnings for missing properties, and previews how the link appears on social platforms.\n\n### Features\n\n- Fetch and parse OG tags from any URL\n- Validation against OG protocol spec\n- Visual preview cards\n- Warning for missing recommended tags",
+      "category": "web-seo",
+      "tags": ["open-graph", "validator", "seo", "meta-tags"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS", "Fetch API"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "meta-tag-generator",
+      "name": "Meta Tag Generator",
+      "shortDescription": "Create standard HTML meta tags for SEO, social sharing, and browser behavior.",
+      "longDescription": "## Meta Tag Generator\n\nA comprehensive meta tag builder that generates all the essential HTML meta tags your page needs. Covers SEO, social sharing, viewport, charset, and more.\n\n### Features\n\n- SEO meta tags (title, description, keywords, robots)\n- Social meta tags (OG, Twitter Card)\n- Technical meta tags (charset, viewport, theme-color)\n- Copy all tags with one click",
+      "category": "web-seo",
+      "tags": ["meta-tags", "seo", "html", "generator"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "twitter-card-preview",
+      "name": "Twitter / X Card Preview",
+      "shortDescription": "Preview how your links will appear when shared on Twitter / X.",
+      "longDescription": "## Twitter / X Card Preview\n\nSee exactly how your links will look when shared on Twitter / X. Supports Summary, Summary Large Image, App, and Player card types.\n\n### Features\n\n- All Twitter Card types supported\n- Live preview as you type\n- Validation of required fields\n- Generate twitter:card meta tags",
+      "category": "web-seo",
+      "tags": ["twitter", "card", "preview", "social-media"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "robots-txt-generator",
+      "name": "Robots.txt Generator",
+      "shortDescription": "Build a robots.txt file visually with user-agent rules and sitemaps.",
+      "longDescription": "## Robots.txt Generator\n\nCreate robots.txt files without memorizing the syntax. Add user-agent rules, allow/disallow paths, and sitemap references through a visual interface.\n\n### Features\n\n- Add multiple user-agent blocks\n- Allow and disallow paths\n- Sitemap URL support\n- Crawl-delay setting\n- Download or copy the generated file",
+      "category": "web-seo",
+      "tags": ["robots", "seo", "crawler", "generator"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "json-formatter",
+      "name": "JSON Formatter",
+      "shortDescription": "Format, validate, and minify JSON with syntax highlighting and error detection.",
+      "longDescription": "## JSON Formatter\n\nPaste messy JSON and get it beautifully formatted instantly. Validates JSON structure, highlights syntax errors with line numbers, and can minify for production use.\n\n### Features\n\n- Format / prettify JSON with configurable indentation\n- Minify JSON (remove whitespace)\n- Syntax highlighting\n- Error detection with line and column numbers\n- Copy formatted output\n- Download as .json file",
+      "category": "json-api",
+      "tags": ["json", "formatter", "validator", "minify", "prettify"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "jwt-decoder",
+      "name": "JWT Decoder",
+      "shortDescription": "Decode and inspect JSON Web Token header, payload, and signature.",
+      "longDescription": "## JWT Decoder\n\nPaste a JWT and instantly see its decoded header, payload, and signature. Highlights expiration, issued-at, and other standard claims.\n\n### Features\n\n- Decode header and payload\n- Highlight standard claims (exp, iat, sub, iss)\n- Expiration check (expired / valid / no expiry)\n- Color-coded token parts\n- Copy decoded sections",
+      "category": "json-api",
+      "tags": ["jwt", "decoder", "token", "authentication"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "url-encoder-decoder",
+      "name": "URL Encoder / Decoder",
+      "shortDescription": "Encode and decode URL strings, query parameters, and URI components.",
+      "longDescription": "## URL Encoder / Decoder\n\nQuickly encode or decode URLs and URI components. Handles special characters, query strings, and full URLs.\n\n### Features\n\n- Encode / decode full URLs\n- Encode / decode URI components\n- Handle special characters\n- Batch mode for multiple values\n- Copy result to clipboard",
+      "category": "json-api",
+      "tags": ["url", "encoder", "decoder", "uri"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "base64-encoder-decoder",
+      "name": "Base64 Encoder / Decoder",
+      "shortDescription": "Encode and decode Base64 strings for text, data URIs, and binary data.",
+      "longDescription": "## Base64 Encoder / Decoder\n\nConvert text to Base64 and back. Supports UTF-8 text, binary data, and data URI generation for images.\n\n### Features\n\n- Text to Base64 encoding\n- Base64 to text decoding\n- File to Base64 conversion\n- Data URI generation\n- UTF-8 support",
+      "category": "json-api",
+      "tags": ["base64", "encoder", "decoder", "data-uri"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "color-picker",
+      "name": "Color Picker",
+      "shortDescription": "Pick colors and get output in HEX, RGB, HSL, and OKLCH formats.",
+      "longDescription": "## Color Picker\n\nA visual color picker that outputs colors in every format you need. Pick from the color wheel or enter values directly.\n\n### Features\n\n- Visual color wheel / area picker\n- HEX, RGB, HSL, OKLCH output\n- Copy any format to clipboard\n- Color history (recent picks)\n- Named CSS colors reference",
+      "category": "color",
+      "tags": ["color", "picker", "hex", "rgb", "hsl"],
+      "techStack": ["HTML5", "CSS3", "Canvas API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "contrast-checker",
+      "name": "Contrast Checker",
+      "shortDescription": "Check WCAG 2.1 AA and AAA contrast ratio compliance between two colors.",
+      "longDescription": "## Contrast Checker\n\nVerify that your text and background color combinations meet WCAG 2.1 accessibility standards. Shows pass/fail for both AA and AAA levels.\n\n### Features\n\n- WCAG 2.1 contrast ratio calculation\n- AA and AAA pass/fail indicators\n- Large text and normal text checks\n- Visual preview of the color combination\n- Suggest closest accessible color",
+      "category": "accessibility",
+      "tags": ["contrast", "wcag", "accessibility", "a11y", "color"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "gradient-builder",
+      "name": "Gradient Builder",
+      "shortDescription": "Create CSS linear and radial gradients visually with live preview.",
+      "longDescription": "## Gradient Builder\n\nDesign beautiful CSS gradients with a visual editor. Supports linear and radial gradients with multiple color stops.\n\n### Features\n\n- Linear and radial gradient support\n- Multiple color stops with drag positioning\n- Angle / direction control\n- Live CSS output\n- Copy CSS to clipboard\n- Preset gradients library",
+      "category": "color",
+      "tags": ["gradient", "css", "color", "generator"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "box-shadow-generator",
+      "name": "Box Shadow Generator",
+      "shortDescription": "Design CSS box shadows with live preview, multiple layers, and code export.",
+      "longDescription": "## Box Shadow Generator\n\nCreate beautiful CSS box shadows with a visual editor. Add multiple shadow layers, adjust offsets, blur, spread, and color.\n\n### Features\n\n- Multiple shadow layers\n- Horizontal and vertical offset sliders\n- Blur radius and spread control\n- Color picker with opacity\n- Inset shadow toggle\n- Live preview and CSS output",
+      "category": "css",
+      "tags": ["box-shadow", "css", "generator", "design"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "css-grid-generator",
+      "name": "CSS Grid Generator",
+      "shortDescription": "Build CSS Grid layouts visually with interactive rows, columns, and areas.",
+      "longDescription": "## CSS Grid Generator\n\nDesign CSS Grid layouts by clicking and dragging. Define rows, columns, gaps, and named areas, then export clean CSS.\n\n### Features\n\n- Visual grid builder\n- Add/remove rows and columns\n- Drag to create grid areas\n- Gap and alignment controls\n- Responsive preview\n- Export HTML and CSS",
+      "category": "css",
+      "tags": ["css-grid", "layout", "generator", "design"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "flexbox-playground",
+      "name": "Flexbox Playground",
+      "shortDescription": "Experiment with Flexbox properties and see the effects in real time.",
+      "longDescription": "## Flexbox Playground\n\nLearn and experiment with every CSS Flexbox property. Toggle container and item properties and see instant visual feedback.\n\n### Features\n\n- All flex container properties\n- All flex item properties\n- Add/remove flex items\n- Visual highlighting of alignment\n- Export CSS",
+      "category": "css",
+      "tags": ["flexbox", "css", "layout", "playground"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "image-dimension-checker",
+      "name": "Image Dimension Checker",
+      "shortDescription": "Drop or upload an image to instantly see its width, height, and aspect ratio.",
+      "longDescription": "## Image Dimension Checker\n\nDrag and drop any image to instantly view its dimensions, aspect ratio, file size, and format. Works entirely in the browser.\n\n### Features\n\n- Drag and drop or file upload\n- Width, height, and aspect ratio display\n- File size and format detection\n- Multiple image support\n- No images are uploaded anywhere",
+      "category": "image",
+      "tags": ["image", "dimensions", "aspect-ratio", "size"],
+      "techStack": ["HTML5", "CSS3", "File API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "svg-previewer",
+      "name": "SVG Previewer",
+      "shortDescription": "Paste SVG code and preview it instantly with zoom and background options.",
+      "longDescription": "## SVG Previewer\n\nPaste SVG markup and see it rendered immediately. Toggle backgrounds, zoom in/out, and inspect SVG dimensions.\n\n### Features\n\n- Live SVG rendering from code\n- Dark/light/checkerboard background toggle\n- Zoom controls\n- SVG dimension display\n- Download as PNG option",
+      "category": "image",
+      "tags": ["svg", "preview", "viewer", "vector"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "lorem-ipsum-generator",
+      "name": "Lorem Ipsum Generator",
+      "shortDescription": "Generate placeholder text in paragraphs, sentences, or words.",
+      "longDescription": "## Lorem Ipsum Generator\n\nGenerate placeholder text for your designs and layouts. Choose the number of paragraphs, sentences, or words.\n\n### Features\n\n- Generate by paragraphs, sentences, or words\n- Configurable count\n- Start with \"Lorem ipsum dolor sit amet...\"\n- Copy to clipboard\n- Plain text and HTML output",
+      "category": "text",
+      "tags": ["lorem-ipsum", "placeholder", "text", "generator"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "word-character-counter",
+      "name": "Word / Character Counter",
+      "shortDescription": "Count words, characters, sentences, and paragraphs with reading time.",
+      "longDescription": "## Word / Character Counter\n\nPaste or type text and get instant statistics. Word count, character count (with/without spaces), sentence count, paragraph count, and estimated reading time.\n\n### Features\n\n- Word count\n- Character count (with and without spaces)\n- Sentence and paragraph count\n- Estimated reading time\n- Live update as you type",
+      "category": "text",
+      "tags": ["word-count", "character-count", "text", "statistics"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "case-converter",
+      "name": "Case Converter",
+      "shortDescription": "Transform text between camelCase, snake_case, UPPER, lower, Title, and more.",
+      "longDescription": "## Case Converter\n\nConvert text between every common casing style. Useful for developers switching between naming conventions.\n\n### Features\n\n- camelCase\n- PascalCase\n- snake_case\n- kebab-case\n- UPPER CASE\n- lower case\n- Title Case\n- Sentence case\n- CONSTANT_CASE\n- dot.case",
+      "category": "text",
+      "tags": ["case", "converter", "text", "camelCase", "snake_case"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "regex-tester",
+      "name": "Regex Tester",
+      "shortDescription": "Test regular expressions with live matching, group highlighting, and flags.",
+      "longDescription": "## Regex Tester\n\nWrite and test regular expressions with instant visual feedback. See matches highlighted in your test string, with capture groups color-coded.\n\n### Features\n\n- Live regex matching\n- Capture group highlighting\n- All regex flags (g, i, m, s, u, y)\n- Match count and details\n- Common regex patterns library\n- Replace mode",
+      "category": "utilities",
+      "tags": ["regex", "tester", "regular-expression", "pattern"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "uuid-generator",
+      "name": "UUID Generator",
+      "shortDescription": "Generate random v4 UUIDs instantly with bulk generation support.",
+      "longDescription": "## UUID Generator\n\nGenerate RFC 4122 compliant v4 UUIDs. Create single or bulk UUIDs with one click.\n\n### Features\n\n- Generate single UUID\n- Bulk generation (up to 100)\n- Uppercase / lowercase toggle\n- With or without hyphens\n- Copy to clipboard\n- History of generated UUIDs",
+      "category": "utilities",
+      "tags": ["uuid", "generator", "random", "identifier"],
+      "techStack": ["HTML5", "CSS3", "Crypto API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "timestamp-converter",
+      "name": "Timestamp Converter",
+      "shortDescription": "Convert Unix timestamps to human-readable dates and vice versa.",
+      "longDescription": "## Timestamp Converter\n\nConvert between Unix timestamps (seconds and milliseconds) and human-readable date formats. Shows local time, UTC, and ISO 8601.\n\n### Features\n\n- Unix timestamp to date\n- Date to Unix timestamp\n- Seconds and milliseconds support\n- Local time and UTC display\n- ISO 8601 output\n- Current timestamp display",
+      "category": "utilities",
+      "tags": ["timestamp", "unix", "date", "converter", "epoch"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "hash-generator",
+      "name": "Hash Generator",
+      "shortDescription": "Generate MD5, SHA-1, SHA-256, and SHA-512 hashes from text input.",
+      "longDescription": "## Hash Generator\n\nGenerate cryptographic hashes from text input using the Web Crypto API. Supports multiple hash algorithms.\n\n### Features\n\n- MD5 (via JS implementation)\n- SHA-1\n- SHA-256\n- SHA-512\n- Live hashing as you type\n- Copy any hash to clipboard\n- File hashing support",
+      "category": "utilities",
+      "tags": ["hash", "md5", "sha", "cryptography", "generator"],
+      "techStack": ["HTML5", "CSS3", "Web Crypto API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "password-generator",
+      "name": "Password Generator",
+      "shortDescription": "Generate strong random passwords with customizable length and characters.",
+      "longDescription": "## Password Generator\n\nGenerate cryptographically strong random passwords. Customize length, character sets, and exclusions.\n\n### Features\n\n- Configurable length\n- Include/exclude: uppercase, lowercase, numbers, symbols\n- Exclude ambiguous characters (0, O, l, 1)\n- Password strength indicator\n- Generate multiple passwords\n- Copy to clipboard",
+      "category": "utilities",
+      "tags": ["password", "generator", "security", "random"],
+      "techStack": ["HTML5", "CSS3", "Crypto API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "qr-code-generator",
+      "name": "QR Code Generator",
+      "shortDescription": "Create QR codes from text, URLs, or data with download options.",
+      "longDescription": "## QR Code Generator\n\nGenerate QR codes from any text or URL. Customize size and download as PNG or SVG.\n\n### Features\n\n- Text and URL input\n- Configurable size\n- Error correction levels\n- Download as PNG\n- Download as SVG\n- Color customization",
+      "category": "utilities",
+      "tags": ["qr-code", "generator", "barcode"],
+      "techStack": ["HTML5", "CSS3", "Canvas API"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "markdown-previewer",
+      "name": "Markdown Previewer",
+      "shortDescription": "Write Markdown on the left, see rendered HTML on the right in real time.",
+      "longDescription": "## Markdown Previewer\n\nA split-pane Markdown editor with live preview. Write Markdown on the left and see it rendered as HTML instantly on the right.\n\n### Features\n\n- Live preview as you type\n- GitHub Flavored Markdown support\n- Syntax highlighting for code blocks\n- Full-screen editing mode\n- Export as HTML\n- Print-friendly output",
+      "category": "text",
+      "tags": ["markdown", "preview", "editor", "html"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "slug-generator",
+      "name": "Slug Generator",
+      "shortDescription": "Convert text to URL-friendly slugs with customizable separators.",
+      "longDescription": "## Slug Generator\n\nConvert any text into a clean, URL-friendly slug. Handles special characters, accents, and Unicode.\n\n### Features\n\n- Automatic slug generation\n- Customizable separator (hyphen, underscore)\n- Unicode and accent handling\n- Maximum length setting\n- Live preview\n- Copy to clipboard",
+      "category": "text",
+      "tags": ["slug", "url", "generator", "text"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "cron-expression-builder",
+      "name": "Cron Expression Builder",
+      "shortDescription": "Build and understand cron schedule expressions with a visual interface.",
+      "longDescription": "## Cron Expression Builder\n\nBuild cron expressions visually instead of memorizing the syntax. See a human-readable description of when your cron job will run.\n\n### Features\n\n- Visual cron builder (minute, hour, day, month, weekday)\n- Human-readable schedule description\n- Next 5 execution times\n- Preset common schedules\n- Copy expression to clipboard",
+      "category": "utilities",
+      "tags": ["cron", "scheduler", "expression", "builder"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Medium",
+      "status": "idea"
+    },
+    {
+      "id": "user-agent-parser",
+      "name": "User Agent Parser",
+      "shortDescription": "Parse and explain browser user agent strings into readable components.",
+      "longDescription": "## User Agent Parser\n\nPaste any user agent string and see it broken down into browser, engine, OS, and device information. Also shows your current user agent.\n\n### Features\n\n- Parse any user agent string\n- Detect browser name and version\n- Detect OS and platform\n- Device type detection\n- Show current browser's user agent\n- Common user agents reference",
+      "category": "browser-network",
+      "tags": ["user-agent", "parser", "browser", "detection"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "viewport-screen-info",
+      "name": "Viewport / Screen Info",
+      "shortDescription": "Display current device viewport, screen dimensions, and pixel ratio.",
+      "longDescription": "## Viewport / Screen Info\n\nInstantly see your current viewport width, screen resolution, device pixel ratio, and more. Updates live as you resize.\n\n### Features\n\n- Viewport width and height (live)\n- Screen width and height\n- Device pixel ratio\n- Color depth\n- Orientation\n- Touch support detection\n- CSS media query matches",
+      "category": "browser-network",
+      "tags": ["viewport", "screen", "resolution", "responsive"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    },
+    {
+      "id": "heading-structure-visualizer",
+      "name": "Heading Structure Visualizer",
+      "shortDescription": "Paste HTML or a URL to visualize the heading hierarchy and spot issues.",
+      "longDescription": "## Heading Structure Visualizer\n\nVisualize the heading structure (h1-h6) of any HTML page. Highlights skipped levels and accessibility issues.\n\n### Features\n\n- Paste HTML to analyze\n- Tree view of heading hierarchy\n- Highlight skipped heading levels\n- Accessibility warnings\n- Outline view matching screen reader behavior",
+      "category": "accessibility",
+      "tags": ["headings", "structure", "accessibility", "a11y", "html"],
+      "techStack": ["HTML5", "CSS3", "Vanilla JS"],
+      "difficulty": "Easy",
+      "status": "idea"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "one-file-tools",
+  "version": "1.0.0",
+  "description": "A collection of useful developer tools, each built as a single HTML file.",
+  "private": true,
+  "scripts": {
+    "build": "node build.js"
+  },
+  "author": "Praveen Kumar Purushothaman <praveen@praveen.science> (https://praveen.science)",
+  "license": "Unlicense"
+}
