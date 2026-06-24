@@ -28,12 +28,16 @@ Every tool in this collection is a standalone `.html` file containing all the HT
   Keep it alphabetical within each category.
 -->
 
-| #   | Tool                                                    | Category  | Description                                                                              | Live                                                                       |
-| --- | ------------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| 1   | [Border Radius Generator](tools/border-radius-generator.html) | Web & SEO | CSS border-radius playground. | [Try it](https://one-file-tools.pages.dev/tools/border-radius-generator) |
-| 2   | [Open Graph Inspector](tools/open-graph-inspector.html) | Web & SEO | Analyze meta tags, social previews, and SEO metadata for any URL with actionable scores. | [Try it](https://one-file-tools.pages.dev/tools/open-graph-inspector) |
-| 3   | [JSON Formatter](tools/json-formatter.html) | JSON & API | Format, validate, and minify JSON locally in your browser. | [Try it](https://one-file-tools.pages.dev/tools/json-formatter) |
-| 4   | [UUID Generator](tools/uuid-generator.html)             | Developer | Generate random v4 UUIDs instantly, offline.                                             | [Try it](https://one-file-tools.pages.dev/tools/uuid-generator)       |
+| # | Tool                                                          | Category            | Description                                                                                                                      | Live                                                                     |
+| - | ------------------------------------------------------------- | ------------------- | -------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| 1 | [Aspect Ratio Calculator](tools/aspect-ratio-calculator.html) | CSS Tools           | Calculate and simplify aspect ratios instantly. Supports common presets and outputs decimal ratio and CSS padding-bottom values. | [Try it](https://one-file-tools.pages.dev/tools/aspect-ratio-calculator) |
+| 2 | [Clip Path Generator](tools/clip-path-generator.html)         | CSS Tools           | Visually create complex CSS clip-path shapes and instantly copy the generated code.                                              | [Try it](https://one-file-tools.pages.dev/tools/clip-path-generator)     |
+| 3 | [Favicon Generator](tools/favicon-generator.html)             | Developer Utilities | Generate a complete favicon pack and integration tags from any image, offline.                                                   | [Try it](https://one-file-tools.pages.dev/tools/favicon-generator)       |
+| 4 | [JSON Formatter](tools/json-formatter.html)                   | JSON & API          | Format, validate, and minify JSON locally in your browser.                                                                       | [Try it](https://one-file-tools.pages.dev/tools/json-formatter)          |
+| 5 | [Open Graph Inspector](tools/open-graph-inspector.html)       | Web & SEO           | Analyze meta tags, social previews, and SEO metadata for any URL with actionable scores.                                         | [Try it](https://one-file-tools.pages.dev/tools/open-graph-inspector)    |
+| 6 | [Border Radius Generator](tools/border-radius-generator.html) | CSS Tools           | Visually create CSS border-radius values with live preview, presets, and copy-ready CSS output.                                  | [Try it](https://one-file-tools.pages.dev/tools/border-radius-generator) |
+| 7 | [UUID Generator](tools/uuid-generator.html)                   | Developer Utilities | Generate random v4 UUIDs instantly, offline.                                                                                     | [Try it](https://one-file-tools.pages.dev/tools/uuid-generator)          |
+
 
 > **Want to see your tool here?** Check out the [Contributing Guide](Contributing.md) and pick an idea from the [Ideas Board](#ideas-board).
 
