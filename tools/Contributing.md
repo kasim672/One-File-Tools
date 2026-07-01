@@ -229,10 +229,11 @@ Check that your tool card appears on the landing page with the correct name, des
 ### 10. Format with Prettier
 
 ```bash
-npx prettier --write tools/your-tool-name.html
+npm run format                                     # format ALL tools
+npx prettier --write tools/your-tool-name.html     # format a single tool
 ```
 
-The project uses Prettier with a `.prettierrc` config at the root. Key settings:
+The project uses Prettier (included as a devDependency) with a `.prettierrc` config at the root. Key settings:
 - 2-space indentation, no tabs
 - Double quotes, semicolons always
 - No trailing commas
@@ -402,7 +403,7 @@ If you're participating in **Social Summer of Code**:
 - [ ] Works on mobile (responsive)
 - [ ] No console errors
 - [ ] Core functionality works (CDN resources need network, which is fine)
-- [ ] Formatted with Prettier (`npx prettier --write tools/your-tool.html`)
+- [ ] Formatted with Prettier (`npm run format` or `npx prettier --write tools/your-tool.html`)
 - [ ] Has dark mode support
 - [ ] Footer links back to One File Tools
 - [ ] Keyboard accessible (Tab navigation works)

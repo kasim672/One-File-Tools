@@ -225,6 +225,7 @@ git checkout -b add/your-tool-name
 touch tools/your-tool-name.html
 
 # Run the build scripts.
+npm run format                              # Format all tools with Prettier
 node scripts/sort-norm.js data/tools.json   # Sort and normalize tools.json
 node scripts/build.js                       # Regenerate the landing page
 node scripts/theme-gen.js                   # Regenerate resume/portfolio themes (optional)

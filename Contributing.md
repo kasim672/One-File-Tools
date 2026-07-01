@@ -485,7 +485,7 @@ Keep it simple and readable. Someone learning web development should be able to 
 
 ### Prettier Format
 
-This project uses [Prettier](https://prettier.io/) for consistent code formatting. If you use VS Code, install the Prettier extension and it will pick up the config automatically.
+This project uses [Prettier](https://prettier.io/) (included as a devDependency) for consistent code formatting. If you use VS Code, install the Prettier extension and it will pick up the config automatically.
 
 **Key settings:**
 
@@ -531,7 +531,8 @@ A `.prettierrc` file already exists at the project root. If you need to recreate
 Run Prettier before submitting:
 
 ```bash
-npx prettier --write tools/your-tool-name.html
+npm run format                                     # format ALL tools
+npx prettier --write tools/your-tool-name.html     # format a single tool
 ```
 
 > **Note:** The `printWidth: 80000` is intentional — it effectively means “never auto-wrap lines”. This is by design, not a typo.
