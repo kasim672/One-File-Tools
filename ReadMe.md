@@ -105,7 +105,7 @@ Below is a curated list of tool ideas waiting to be built. Each idea is a potent
 | JSON-LD / Schema.org Generator — build structured data         | Medium     |
 | Hreflang Tag Generator — generate multi-language link tags     | Easy       |
 | ~~Responsive Breakpoint Tester~~ — ✅ [Built](tools/responsive-breakpoint-tester.html) | Medium |
-| Privacy Policy Generator — fill a form, get a basic privacy policy   | Easy   |
+| ~~Privacy Policy Generator — fill a form, get a basic privacy policy~~ | ✅ Built |
 
 ### Image Tools
 
