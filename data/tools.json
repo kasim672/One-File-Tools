@@ -572,6 +572,28 @@
       "status": "live"
     },
     {
+      "id": "css-variable-explorer",
+      "name": "CSS Variable Explorer",
+      "shortDescription": "Extract, edit, preview, copy, and download CSS custom properties with a live theme preview.",
+      "longDescription": "## CSS Variable Explorer\n\nA standalone tool to extract CSS custom properties (variables), edit them visually, preview theme changes in real time, and export the updated CSS.\n\n### Features\n\n- Extract CSS variables from pasted CSS\n- Search variables instantly\n- Edit variable values\n- Color picker for color variables\n- Live theme preview\n- Copy generated CSS\n- Download updated CSS file\n- Fully offline and self-contained",
+      "category": "css",
+      "tags": [
+        "color-picker",
+        "css",
+        "custom-properties",
+        "preview",
+        "theme",
+        "variables"
+      ],
+      "techStack": [
+        "CSS3",
+        "HTML5",
+        "Vanilla JS"
+      ],
+      "difficulty": "Medium",
+      "status": "live"
+    },
+    {
       "id": "css-variable-explorer-glass",
       "name": "CSS Variable Explorer & Theme Generator",
       "shortDescription": "Explore, edit, and export CSS custom properties with live preview and a glassmorphism UI.",
