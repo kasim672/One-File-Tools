@@ -21,7 +21,7 @@
   ],
   "quests": [
     {
-      "id": "closure-chronicles-2",
+      "id": "closure-chronicles",
       "name": "Closure Chronicles (v2)",
       "shortDescription": "Master JavaScript closures through 10 interactive puzzles covering scope, lexical bindings, private variables, and the module pattern — with hints, badges, and a timer.",
       "longDescription": "## Closure Chronicles (v2)\n\nAn enhanced version of Closure Chronicles with a polished dark terminal UI, hint system, achievement badges, and timed gameplay.\n\n### Features\n\n- 10 progressively harder levels covering global, function, block, and lexical scope\n- Syntax-highlighted code blocks\n- Hint system (costs one star)\n- Achievement badges: Flawless Run, Pure Knowledge, Closure Master\n- Timer tracking completion speed\n- 3-star rating based on accuracy\n- Confetti celebration on completion\n- Progress saved via localStorage",
