@@ -380,9 +380,7 @@ Built for One File Tools.
         <div class="eyebrow">Browser & Network</div>
         <h1 class="wordmark">Cookie Viewer</h1>
         <p class="tagline">Inspect, create, edit, delete, and search cookies for the current site — no dev tools required.</p>
-        <div class="origin-note">
-          <strong>Note:</strong> this page can only see cookies readable from JavaScript on <code id="currentOrigin"></code>. <strong>HttpOnly</strong> cookies are deliberately invisible to scripts (a security feature), so they won't appear here even though the server sees them. New cookies are also scoped to this page's own path/domain — you can't create or edit cookies belonging to a different site.
-        </div>
+        <div class="origin-note"><strong>Note:</strong> this page can only see cookies readable from JavaScript on <code id="currentOrigin"></code>. <strong>HttpOnly</strong> cookies are deliberately invisible to scripts (a security feature), so they won't appear here even though the server sees them. New cookies are also scoped to this page's own path/domain — you can't create or edit cookies belonging to a different site.</div>
       </header>
 
       <main class="studio">
@@ -475,7 +473,13 @@ Built for One File Tools.
             } catch (err) {
               /* Leave as-is if it isn't valid percent-encoding. */
             }
-            return { name: decodeURIComponent(name), value: decodedValue };
+            let decodedName = name;
+            try {
+              decodedName = decodeURIComponent(name);
+            } catch (e) {
+              /* leave as-is */
+            }
+            return { name: decodedName, value: decodedValue };
           })
           .sort((a, b) => a.name.localeCompare(b.name));
       }
@@ -516,14 +520,7 @@ Built for One File Tools.
 
         const meta = document.createElement("div");
         meta.className = "cookie-meta";
-        meta.innerHTML =
-          "<span>path: " +
-          "/" +
-          "</span><span>domain: " +
-          window.location.hostname +
-          "</span><span>Secure: " +
-          (location.protocol === "https:" ? "yes" : "no (http)") +
-          "</span>";
+        meta.innerHTML = "<span>path: " + "/" + "</span><span>domain: " + window.location.hostname + "</span><span>Secure: " + (location.protocol === "https:" ? "yes" : "no (http)") + "</span>";
         // Note: document.cookie never exposes original expiration, HttpOnly, or
         // SameSite values for existing cookies — only name/value are readable.
         // We show what we *can* determine (current page's path/domain/protocol)
@@ -552,7 +549,7 @@ Built for One File Tools.
         copyValueBtn.type = "button";
         copyValueBtn.className = "icon-btn-sm";
         copyValueBtn.textContent = "Copy value";
-        copyValueBtn.addEventListener("click", () => copyText(cookie.value, "Value copied!"));
+        copyValueBtn.addEventListener("click", () => copyText(valueInput.value, "Value copied!"));
 
         const deleteBtn = document.createElement("button");
         deleteBtn.type = "button";

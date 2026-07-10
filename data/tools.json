@@ -692,6 +692,28 @@
       "status": "live"
     },
     {
+      "id": "cookie-viewer",
+      "name": "Cookie Viewer",
+      "shortDescription": "Inspect, create, edit, delete, and search cookies for the current site — no dev tools required.",
+      "longDescription": "## Cookie Viewer\n\nA browser-based cookie management tool that lets you work with cookies on the current origin without opening DevTools.\n\n### Features\n\n- View all JavaScript-readable cookies for the current page\n- Search cookies by name or value in real time\n- Create new cookies with configurable value, max-age, and SameSite attributes\n- Edit existing cookie values inline and save changes\n- Delete individual cookies or clear all at once\n- Copy cookie names and values to clipboard\n- Displays metadata (path, domain, secure status) for each cookie\n- Note explaining that HttpOnly cookies are not visible to JavaScript",
+      "category": "browser-network",
+      "tags": [
+        "browser",
+        "cookies",
+        "developer-tools",
+        "inspector",
+        "privacy",
+        "storage"
+      ],
+      "techStack": [
+        "CSS3",
+        "HTML5",
+        "Vanilla JS"
+      ],
+      "difficulty": "Easy",
+      "status": "live"
+    },
+    {
       "id": "cron-expression-builder",
       "name": "Cron Expression Builder",
       "shortDescription": "Build and customize cron schedules with presets, instant validation, explanations, and upcoming run previews.",
@@ -1758,7 +1780,7 @@
       ],
       "difficulty": "Hard",
       "status": "live"
-    }
+    },
     {
       "id": "open-graph-checker",
       "name": "Open Graph Checker",
