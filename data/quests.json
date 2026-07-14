@@ -220,6 +220,28 @@
       "status": "live"
     },
     {
+      "id": "http-status-code-quiz",
+      "name": "HTTP Status Code Quiz",
+      "shortDescription": "Guess the right status code for a scenario in this interactive quiz.",
+      "longDescription": "## HTTP Status Code Quiz\n\nA quick quiz to test your knowledge of common HTTP status codes. Can you guess the right status code for each scenario?\n\n### Features\n\n- Multiple-choice questions covering 1xx, 2xx, 3xx, 4xx, and 5xx status codes.\n- Instant feedback on your answers.\n- Progress saved locally.",
+      "category": "general-dev-quests",
+      "tags": [
+        "api",
+        "http",
+        "quiz",
+        "status-codes",
+        "web"
+      ],
+      "techStack": [
+        "CSS3",
+        "HTML5",
+        "LocalStorage API",
+        "Vanilla JS"
+      ],
+      "difficulty": "Easy",
+      "status": "live"
+    },
+    {
       "id": "merge-conflict-frontline",
       "name": "Merge Conflict: Frontline",
       "shortDescription": "A tactical war/heist strategy game that teaches Git merge conflict resolution by defusing increasingly complex conflicts under pressure.",
@@ -349,6 +371,29 @@
         "HTML5",
         "LocalStorage API",
         "SVG",
+        "Vanilla JS"
+      ],
+      "difficulty": "Medium",
+      "status": "live"
+    },
+    {
+      "id": "sql-query-challenge",
+      "name": "SQL Query Challenge",
+      "shortDescription": "Write queries to match expected output tables.",
+      "longDescription": "## SQL Query Challenge\n\nAn interactive quest to test and improve your SQL skills. Write queries to transform input tables into the expected output.\n\n### Features\n\n- Write SQL queries in a browser-based editor.\n- Compare your query output against the target table.\n- Multiple levels of increasing difficulty.\n- Progress saved locally.",
+      "category": "general-dev-quests",
+      "tags": [
+        "challenge",
+        "database",
+        "interactive",
+        "query",
+        "sql"
+      ],
+      "techStack": [
+        "CSS3",
+        "HTML5",
+        "LocalStorage API",
+        "SQL.js",
         "Vanilla JS"
       ],
       "difficulty": "Medium",
