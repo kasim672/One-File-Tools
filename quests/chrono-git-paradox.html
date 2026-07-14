@@ -1265,7 +1265,7 @@
       {
         id: 4,
         title: "Purging Anomalous Timelines",
-        objective: " Timeline commit C6 has caused severe chronological shifts. Purge the anomaly completely by rolling HEAD back to 'C4' and clearing all local files. Run 'git reset --hard C4'.",
+        objective: "Timeline commit C6 has caused severe chronological shifts. Purge the anomaly completely by rolling HEAD back to 'C4' and clearing all local files. Run 'git reset --hard C4'.",
         targetBranch: "main",
         startPreset: 3
       },
@@ -1346,6 +1346,7 @@
   <div class="terminal-output">Ready for temporal coordinate corrections. Enter git command.</div>
 </div>`;
         this.updatePromptLabel();
+        this.renderGraph();
       },
 
       updatePromptLabel() {
@@ -1499,12 +1500,15 @@
             return { text: "No stash entries found.", error: true };
           }
 
-          const item = this.gitState.stashedAnomalies.pop();
+          const item = sub === 'pop'
+            ? this.gitState.stashedAnomalies.pop()
+            : this.gitState.stashedAnomalies[this.gitState.stashedAnomalies.length - 1];
           this.gitState.workingDirectoryClean = false;
           this.gitState.uncommittedFile = item.file;
-          
+
           this.updateStashPanel();
-          return { text: `Dropped stash@{0} (${item.msg})\nRestored changes to ${item.file}`, error: false };
+          const dropMsg = sub === 'pop' ? `Dropped stash@{0} (${item.msg})\n` : '';
+          return { text: `${dropMsg}Restored changes to ${item.file}`, error: false };
         }
 
         // Standard stash
@@ -1642,7 +1646,7 @@
           pop.className = 'pop-btn';
           pop.innerText = 'git stash pop';
           pop.onclick = () => {
-            sound.playClick();
+            sound.playKeypress();
             this.executeCommand('git stash pop');
           };
           card.appendChild(pop);
@@ -1853,7 +1857,7 @@
       },
 
       changeLevel(dir) {
-        sound.playClick();
+        sound.playKeypress();
         const newIdx = this.levelIndex + dir;
         if (newIdx >= 0 && newIdx < levels.length) {
           this.loadLevel(newIdx);
@@ -1861,7 +1865,7 @@
       },
 
       selectTab(tabId, btn) {
-        sound.playClick();
+        sound.playKeypress();
         
         // Update tabs active state
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));

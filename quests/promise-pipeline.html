@@ -1495,7 +1495,9 @@
         this.activeLevel = levels[idx];
         this.selectedSlotId = null;
         this.isFiring = false;
-        
+        this.boilerPressure = 0;
+        this.updatePressureDisplay();
+
         // Reset selections
         this.slotSelections = {};
         this.activeLevel.slots.forEach(slot => {
@@ -1634,7 +1636,7 @@
         // Sync SVG label text
         const svgText = document.getElementById(`text-${slotId}`);
         if (svgText) {
-          svgText.innerText = slot.type === 'combinator' ? `Promise.${valve}` : `.${valve}`;
+          svgText.textContent = slot.type === 'combinator' ? `Promise.${valve}` : `.${valve}`;
         }
 
         this.updateCodeLog();
@@ -1658,6 +1660,9 @@
         });
         document.querySelectorAll('.svg-gear').forEach(el => {
           el.classList.remove('spinning');
+        });
+        document.querySelectorAll('.steam-leak-cloud').forEach(el => {
+          el.classList.remove('leaking');
         });
         const valveIndicator = document.getElementById('valve-glow-indicator');
         if (valveIndicator) valveIndicator.classList.remove('active');

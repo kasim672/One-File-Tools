@@ -1233,7 +1233,7 @@
           .replace(/[^a-z0-9-]/g, "-")
           .replace(/-+/g, "-")
           .replace(/^-|-$/g, "");
-        if (!name) return;
+        if (!name || /^\d/.test(name)) return;
         if (findArea(name)) {
           input.value = "";
           return;

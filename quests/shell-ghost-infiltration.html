@@ -485,7 +485,7 @@
     }
 
     .ids-val-text {
-      font-family: var(--font-hud);
+      font-family: var(--font-mono);
       font-size: 1.1rem;
       font-weight: 700;
       color: #ffffff;
@@ -1291,7 +1291,7 @@
           // Setup initial click selection focus cd traversal
           shape.onclick = () => {
             if (node.isDir) {
-              sound.playClick();
+              sound.playKeypress();
               this.executeCommand(`cd /${node.id === 'root' ? '' : node.id}`);
             }
           };
@@ -1899,7 +1899,7 @@
         if (this.idsAlertLevel >= 100) {
           setTimeout(() => {
             sound.playFail();
-            this.showOutcomeModal(false, "ACCESS DETIED - SYSTEM LOCKOUT! Multiple security alerts triggered corporate trace countermeasures.");
+            this.showOutcomeModal(false, "ACCESS DENIED - SYSTEM LOCKOUT! Multiple security alerts triggered corporate trace countermeasures.");
           }, 500);
         }
       },
@@ -2026,7 +2026,7 @@
       },
 
       changeLevel(dir) {
-        sound.playClick();
+        sound.playKeypress();
         const newIdx = this.levelIndex + dir;
         if (newIdx >= 0 && newIdx < levels.length) {
           this.loadLevel(newIdx);
@@ -2034,7 +2034,7 @@
       },
 
       resetLevel() {
-        sound.playClick();
+        sound.playKeypress();
         this.loadLevel(this.levelIndex);
       },
 

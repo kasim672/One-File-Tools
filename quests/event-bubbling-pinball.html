@@ -23,7 +23,9 @@
       --neon-green-dim: rgba(0, 230, 118, 0.15);
       --neon-yellow: #ffea00;
       --neon-yellow-dim: rgba(255, 234, 0, 0.15);
-      
+      --neon-red: #ff1744;
+      --brass-base: #b08d57;
+
       --font-arcade: 'Press Start 2P', monospace;
       --font-hud: 'Share Tech Mono', monospace;
       --font-label: 'Rajdhani', sans-serif;
@@ -785,7 +787,7 @@
       <div class="game-title">EVENT BUBBLING PINBALL</div>
       <div class="game-subtitle">Propagation Protocol</div>
       <div class="game-desc">
-        Take command of the DOM arcade cabinet! Dispatche event balls down target branches, configure event listeners, toggle capture vs bubbling phases, and use stopPropagation and preventDefault to hit high-score target nodes.
+        Take command of the DOM arcade cabinet! Dispatch event balls down target branches, configure event listeners, toggle capture vs bubbling phases, and use stopPropagation and preventDefault to hit high-score target nodes.
       </div>
       <button class="arcade-btn" onclick="game.start()">Insert Coin</button>
     </div>
@@ -1133,6 +1135,7 @@
       activeLevel: null,
       score: 0,
       isLaunching: false,
+      simulationTimer: null,
       completedLevels: new Set(),
       
       // Node listeners config
@@ -1166,7 +1169,11 @@
         this.score = 0;
         this.updateScoreDisplay();
         this.isLaunching = false;
-        
+        if (this.simulationTimer) {
+          clearTimeout(this.simulationTimer);
+          this.simulationTimer = null;
+        }
+
         // Reset plunger spring
         document.getElementById('plunger-spring-element').style.height = '100px';
 
@@ -1527,6 +1534,7 @@
             }
           }
 
+          let listenerScored = false;
           if (config && config.active) {
             // Checks phase match
             // Event listener matches if:
@@ -1565,6 +1573,7 @@
                 this.score += 100;
                 this.updateScoreDisplay();
               }
+              listenerScored = true;
 
               if (config.stopPropagation || config.stopImmediatePropagation) {
                 this.logMessage("SYSTEM", `Event propagation halted on <${current.name.toLowerCase()}>`);
@@ -1578,8 +1587,8 @@
             }
           }
 
-          // Level 2 Special disarm capture validation check
-          if (this.activeLevel.requiresCapture === current.name && current.phase === 'capture' && config && config.active && config.capture) {
+          // Level 2 Special disarm capture validation check (only award if not already scored above)
+          if (this.activeLevel.requiresCapture === current.name && current.phase === 'capture' && config && config.active && config.capture && !listenerScored) {
             this.logMessage("STRIKE", "UL Capture buffer hit! Trap disabled.");
             this.score += 100;
             this.updateScoreDisplay();
@@ -1601,11 +1610,11 @@
           }
 
           pathIndex++;
-          setTimeout(step, 400); // 400ms speed traversal
+          this.simulationTimer = setTimeout(step, 400); // 400ms speed traversal
         };
 
         // Run traversal loop
-        setTimeout(step, 400);
+        this.simulationTimer = setTimeout(step, 400);
       },
 
       sparkExplosion(x, y) {

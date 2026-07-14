@@ -1761,9 +1761,11 @@
 
       loadLevel(idx) {
         sound.stopSiren();
+        this.sirenActive = false;
         document.body.classList.remove('siren-active');
         document.getElementById('outcome-modal').classList.remove('active');
-        
+        document.getElementById('countdown-timer').classList.remove('warning');
+
         this.levelIndex = idx;
         this.activeLevel = levels[idx];
         this.selectedItemIndex = null;
@@ -2204,6 +2206,9 @@
         document.body.classList.remove('siren-active');
         sound.playSuccess();
         
+        // Capture rank before updating for rank-unlock detection
+        this.rankBeforeWin = this.calculateRank();
+
         // Save progression
         this.completedLevels.add(this.levelIndex);
         this.saveProgress();
@@ -2254,13 +2259,11 @@
           title.innerText = "MISSION SUCCESSFUL";
           desc.innerText = `Deck clearance verified! Cargo container configuration is balanced and secure. Spaceship launched successfully!`;
           
-          // Calculate if they unlocked a new rank
-          const oldRank = this.calculateRank();
-          // Update rank display
-          this.updateRankDisplay();
+          // Update rank display and check if rank changed
           const newRank = this.calculateRank();
-          
-          if (oldRank !== newRank) {
+          this.updateRankDisplay();
+
+          if (this.rankBeforeWin !== newRank) {
             rankBox.style.display = 'block';
             document.getElementById('modal-rank-name').innerText = newRank;
           }
