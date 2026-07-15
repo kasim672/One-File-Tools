@@ -1,242 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>README Template Generator | One File Tools</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-body{
-font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
-background:#f6f8fa;
-color:#24292f;
-line-height:1.6;
-padding:30px;
-}
-
-.container{
-max-width:1200px;
-margin:auto;
-}
-
-header{
-text-align:center;
-margin-bottom:30px;
-}
-
-header h1{
-font-size:2.2rem;
-margin-bottom:10px;
-}
-
-header p{
-color:#57606a;
-font-size:1rem;
-}
-
-.wrapper{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:25px;
-}
-
-.card{
-background:#fff;
-border:1px solid #d0d7de;
-border-radius:10px;
-padding:20px;
-box-shadow:0 5px 18px rgba(0,0,0,.05);
-}
-
-.card h2{
-margin-bottom:18px;
-font-size:1.3rem;
-}
-
-label{
-display:block;
-font-weight:600;
-margin-top:15px;
-margin-bottom:6px;
-}
-
-input,
-textarea,
-select{
-
-width:100%;
-padding:12px;
-border:1px solid #d0d7de;
-border-radius:8px;
-font-size:15px;
-outline:none;
-transition:.25s;
-
-}
-
-input:focus,
-textarea:focus,
-select:focus{
-
-border-color:#0969da;
-
-}
-
-textarea{
-
-resize:vertical;
-min-height:90px;
-
-}
-
-#output{
-
-height:550px;
-font-family:Consolas,monospace;
-
-}
-
-.buttons{
-
-margin-top:20px;
-display:flex;
-gap:12px;
-flex-wrap:wrap;
-
-}
-
-button{
-
-background:#0969da;
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:8px;
-cursor:pointer;
-font-size:15px;
-transition:.3s;
-
-}
-
-button:hover{
-
-background:#0550ae;
-
-}
-
-@media(max-width:900px){
-
-.wrapper{
-
-grid-template-columns:1fr;
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<header>
-
-<h1>📄 README Template Generator</h1>
-
-<p>Create professional GitHub README.md files instantly.</p>
-
-</header>
-
-<div class="wrapper">
-
-<div class="card">
-
-<h2>Project Details</h2>
-
-<label>Project Name</label>
-<input type="text" id="project" placeholder="e.g. Awesome Portfolio">
-
-<textarea id="desc" placeholder="Briefly describe your project..."></textarea>
-
-<textarea id="install" placeholder="npm install"></textarea>
-
-<textarea id="usage" placeholder="npm run dev"></textarea>
-
-<textarea id="features" placeholder="Responsive UI&#10;Offline Support&#10;Copy to Clipboard"></textarea>
-
-<label>License</label>
-
-<select id="license">
-
-<option>MIT</option>
-
-<option>Apache-2.0</option>
-
-<option>GPL-3.0</option>
-
-<option>BSD-3-Clause</option>
-
-<option>None</option>
-
-</select>
-
-<div class="buttons">
-
-<button onclick="generateREADME()">
-Generate README
-</button>
-
-<button onclick="copyREADME()">
-Copy
-</button>
-
-<button onclick="downloadREADME()">
-Download .md
-</button>
-
-</div>
-
-</div>
-
-<div class="card">
-
-<h2>Generated README</h2>
-
-<textarea id="output" readonly></textarea>
-</div>
-
-</div>
-
-<script>
-
-const project=document.getElementById("project");
-const desc=document.getElementById("desc");
-const install=document.getElementById("install");
-const usage=document.getElementById("usage");
-const features=document.getElementById("features");
-const license=document.getElementById("license");
-const output=document.getElementById("output");
-
-function generateREADME(){
-
-const featureList=features.value
-.split("\n")
-.filter(item=>item.trim()!=="")
-.map(item=>`- ${item}`)
-.join("\n");
-
-const markdown = `# ${project.value}
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>README Template Generator | One File Tools</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          Segoe UI,
+          Tahoma,
+          Geneva,
+          Verdana,
+          sans-serif;
+        background: #f6f8fa;
+        color: #24292f;
+        line-height: 1.6;
+        padding: 30px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+        margin-bottom: 10px;
+      }
+
+      header p {
+        color: #57606a;
+        font-size: 1rem;
+      }
+
+      .wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
+
+      .card {
+        background: #fff;
+        border: 1px solid #d0d7de;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+      }
+
+      .card h2 {
+        margin-bottom: 18px;
+        font-size: 1.3rem;
+      }
+
+      label {
+        display: block;
+        font-weight: 600;
+        margin-top: 15px;
+        margin-bottom: 6px;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d0d7de;
+        border-radius: 8px;
+        font-size: 15px;
+        outline: none;
+        transition: 0.25s;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        border-color: #0969da;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 90px;
+      }
+
+      #output {
+        height: 550px;
+        font-family: Consolas, monospace;
+      }
+
+      .buttons {
+        margin-top: 20px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background: #0969da;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #0550ae;
+      }
+
+      @media (max-width: 900px) {
+        .wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1>📄 README Template Generator</h1>
+
+        <p>Create professional GitHub README.md files instantly.</p>
+      </header>
+
+      <div class="wrapper">
+        <div class="card">
+          <h2>Project Details</h2>
+
+          <label>Project Name</label>
+          <input type="text" id="project" placeholder="e.g. Awesome Portfolio" />
+
+          <label>Description</label>
+          <textarea id="desc" placeholder="Briefly describe your project..."></textarea>
+
+          <label>Installation</label>
+          <textarea id="install" placeholder="npm install"></textarea>
+
+          <label>Usage</label>
+          <textarea id="usage" placeholder="npm run dev"></textarea>
+
+          <label>Features (one per line)</label>
+          <textarea id="features" placeholder="Responsive UI&#10;Offline Support&#10;Copy to Clipboard"></textarea>
+
+          <label>License</label>
+
+          <select id="license">
+            <option>MIT</option>
+
+            <option>Apache-2.0</option>
+
+            <option>GPL-3.0</option>
+
+            <option>BSD-3-Clause</option>
+
+            <option>None</option>
+          </select>
+
+          <div class="buttons">
+            <button onclick="generateREADME()">Generate README</button>
+
+            <button onclick="copyREADME()">Copy</button>
+
+            <button onclick="downloadREADME()">Download .md</button>
+
+            <button onclick="clearForm()">Clear</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Generated README</h2>
+
+          <textarea id="output" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const project = document.getElementById("project");
+      const desc = document.getElementById("desc");
+      const install = document.getElementById("install");
+      const usage = document.getElementById("usage");
+      const features = document.getElementById("features");
+      const license = document.getElementById("license");
+      const output = document.getElementById("output");
+
+      function generateREADME() {
+        const featureList = features.value
+          .split("\n")
+          .filter((item) => item.trim() !== "")
+          .map((item) => `- ${item}`)
+          .join("\n");
+
+        const markdown = `# ${project.value}
 
 ${desc.value}
 
@@ -261,67 +231,59 @@ ${featureList}
 This project is licensed under the **${license.value}** License.
 `;
 
-output.value=markdown;
+        output.value = markdown;
+      }
 
-}
+      project.addEventListener("input", generateREADME);
+      desc.addEventListener("input", generateREADME);
+      install.addEventListener("input", generateREADME);
+      usage.addEventListener("input", generateREADME);
+      features.addEventListener("input", generateREADME);
+      license.addEventListener("change", generateREADME);
 
-project.addEventListener("input",generateREADME);
-desc.addEventListener("input",generateREADME);
-install.addEventListener("input",generateREADME);
-usage.addEventListener("input",generateREADME);
-features.addEventListener("input",generateREADME);
-license.addEventListener("change",generateREADME);
+      function copyREADME() {
+        navigator.clipboard
+          .writeText(output.value)
+          .then(function () {
+            alert("README copied successfully!");
+          })
+          .catch(function () {
+            alert("Failed to copy. Please select the text and copy manually.");
+          });
+      }
 
-function copyREADME(){
-navigator.clipboard.writeText(output.value).then(function(){
-alert("README copied successfully!");
-}).catch(function(){
-alert("Failed to copy. Please select the text and copy manually.");
-});
-}
+      function downloadREADME() {
+        const blob = new Blob([output.value], {
+          type: "text/markdown"
+        });
 
-function downloadREADME(){
+        const link = document.createElement("a");
 
-const blob=new Blob(
-[output.value],
-{
-type:"text/markdown"
-}
-);
+        link.href = URL.createObjectURL(blob);
 
-const link=document.createElement("a");
+        link.download = "README.md";
 
-link.href=URL.createObjectURL(blob);
+        document.body.appendChild(link);
 
-link.download="README.md";
+        link.click();
 
-document.body.appendChild(link);
+        document.body.removeChild(link);
 
-link.click();
+        URL.revokeObjectURL(link.href);
+      }
 
-document.body.removeChild(link);
+      generateREADME();
+      function clearForm() {
+        project.value = "";
+        desc.value = "";
+        install.value = "";
+        usage.value = "";
+        features.value = "";
+        license.selectedIndex = 0;
 
-URL.revokeObjectURL(link.href);
-
-}
-
-generateREADME();
-function clearForm(){
-
-project.value="";
-desc.value="";
-install.value="";
-usage.value="";
-features.value="";
-license.selectedIndex=0;
-
-generateREADME();
-
-}
-
-</script>
-<footer style="text-align:center;margin-top:30px;padding:20px;color:#666;border-top:1px solid #ddd;">
-Built with ❤️ for One File Tools
-</footer>
-</body>
+        generateREADME();
+      }
+    </script>
+    <footer style="text-align: center; margin-top: 30px; padding: 20px; color: #666; border-top: 1px solid #ddd">Built with ❤️ for One File Tools</footer>
+  </body>
 </html>
